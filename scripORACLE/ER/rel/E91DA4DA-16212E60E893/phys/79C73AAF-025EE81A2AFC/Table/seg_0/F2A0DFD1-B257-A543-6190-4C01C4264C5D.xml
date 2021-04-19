@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PUNTUACION" directorySegmentName="seg_0" id="F2A0DFD1-B257-A543-6190-4C01C4264C5D">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7DF9B67B-CAA7-03E6-53F2-44C1FE99595E</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_PUNTUACION" id="05BB06B9-7B2A-8C9F-7682-6D38F5C93370">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="P0" id="17425082-708F-6355-DD35-85F3C2577D1D">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="P5" id="1957AE79-6128-A697-FF3E-8A81CFD4D241">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PUNTAJE" id="2E1AC8A1-8292-CEA8-01F9-ED8ACEA1B34B">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FK_ID_TEMPORADA" id="35940A58-DDB3-FAEE-696C-2A969C4412B4">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FK_ID_USUARIO_MEMBRESIA" id="4F8761C1-D9C2-66B7-C96D-894352BA618D">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="P3" id="65E5F9A8-300C-5F68-5D3B-77B1B1980F89">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="INCREMENTO" id="A10AE3D0-79CC-C2F7-145F-9A615EB9B0A0">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="P10" id="D6779075-8FC6-F150-63E7-DA1C1D138AB7">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_PUNTUACION" id="883A7E68-AA3A-0214-0C9A-0EEAB7469D82">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TEMPORADA_PUNTUACION" id="17E83A25-20B9-3C1F-F25F-0DAA85CBAB51">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_USUARIO_MEMBRESIA_PUNTUACION" id="9ABC7ED2-30CF-3ED6-50E7-F56623A2CB73">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:14 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_PUNTUACION" id="32256BE7-4C17-BF63-5060-34B3D0619F35">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<existingIndex>883A7E68-AA3A-0214-0C9A-0EEAB7469D82</existingIndex>
+<indexSegment>9FA83FE6-6829-ADF8-490C-395E52BA9840</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

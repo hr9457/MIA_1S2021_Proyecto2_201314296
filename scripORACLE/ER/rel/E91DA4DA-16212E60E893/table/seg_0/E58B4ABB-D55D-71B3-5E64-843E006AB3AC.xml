@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E58B4ABB-D55D-71B3-5E64-843E006AB3AC" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="ESTADO_EVENTO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>ESTADO_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_ESTADO_EVENTO" id="F7BF5216-6C6D-0DA5-6141-9789D9769223">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>ESTADO_EVENTO</sourceObjSchema>
+<sourceObjName>ID_ESTADO_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOMBRE_ESTADO_EVENTO" id="51EC90DD-3F74-F567-2D01-7D29D9CA2852">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>ESTADO_EVENTO</sourceObjSchema>
+<sourceObjName>NOMBRE_ESTADO_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COLOR_EVENTO" id="E1033666-8D68-316C-E34E-0CC5895476F2">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>ESTADO_EVENTO</sourceObjSchema>
+<sourceObjName>COLOR_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C2B01893-AAEE-CA6B-912F-5D7013E034AA" name="PK_ESTADO_EVENTO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_ESTADO_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F7BF5216-6C6D-0DA5-6141-9789D9769223"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A782FB54-4A25-FD0E-5B9F-5C73DB8E6E73" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_ESTADO_EVENTO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_ESTADO_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F7BF5216-6C6D-0DA5-6141-9789D9769223"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

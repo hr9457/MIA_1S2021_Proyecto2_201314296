@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BEF04525-0C7A-D206-6225-12CB1E05951D" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="MEMBRESIA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>MEMBRESIA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_MEMBRESIA" id="B080505B-009C-8ADB-4194-0CE7D66D9DEA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>MEMBRESIA</sourceObjSchema>
+<sourceObjName>ID_MEMBRESIA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="TIPO_MEMBRESIA" id="7723C762-366F-A361-5320-1AE81D6FFEDF">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>MEMBRESIA</sourceObjSchema>
+<sourceObjName>TIPO_MEMBRESIA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VALOR_MEMBRESIA" id="4998DD25-A487-7C4F-FE83-302DD38F9566">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>MEMBRESIA</sourceObjSchema>
+<sourceObjName>VALOR_MEMBRESIA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="799F2D29-11F8-889B-00FD-1F7B271F0C94" name="PK_MEMBRESIA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_MEMBRESIA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B080505B-009C-8ADB-4194-0CE7D66D9DEA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5DB9A607-AA7F-F0CA-1AA4-E8E6B273A2FE" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_MEMBRESIA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_MEMBRESIA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B080505B-009C-8ADB-4194-0CE7D66D9DEA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

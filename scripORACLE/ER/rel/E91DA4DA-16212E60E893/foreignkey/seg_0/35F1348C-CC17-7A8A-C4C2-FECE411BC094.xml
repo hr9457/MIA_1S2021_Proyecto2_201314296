@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="35F1348C-CC17-7A8A-C4C2-FECE411BC094" containerWithKeyObject="9039B567-7359-BAC9-E23C-EC47600D1C67" localFKIndex="1690F5BD-0FEB-D0A9-C327-558F1E4FB2E2" name="FK_EQUIP_LOCAL">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_EQUIP_LOCAL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.EQUIPO_JUGADOR</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8D4BD56B-A2F1-9C4A-F193-D74A4D8E6CDD</referredTableID>
+<keyObject>84FF7762-6FAB-EA97-1F95-C6F8C30AEEF5</keyObject>
+<referredKeyID>84FF7762-6FAB-EA97-1F95-C6F8C30AEEF5</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_EQUIPO_JUGADOR</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

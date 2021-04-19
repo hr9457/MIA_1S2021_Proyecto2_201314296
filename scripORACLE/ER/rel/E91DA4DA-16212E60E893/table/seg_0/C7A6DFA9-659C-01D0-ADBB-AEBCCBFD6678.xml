@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C7A6DFA9-659C-01D0-ADBB-AEBCCBFD6678" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="ROL">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>ROL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:30:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_ROL" id="963772B3-A83F-0397-1A85-38EF42E6503B">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>ROL</sourceObjSchema>
+<sourceObjName>ID_ROL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:30:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOMBRE_ROL" id="F5D4427C-DB48-653A-9D90-2688D2AFDA54">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>ROL</sourceObjSchema>
+<sourceObjName>NOMBRE_ROL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:30:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8FA39C21-E09E-C431-CF64-689B62F1F1E7" name="PK_ROL">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_ROL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:30:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="963772B3-A83F-0397-1A85-38EF42E6503B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9873CA39-B3B6-DCE8-E009-7776DFFBD9A6" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_ROL">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_ROL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:30:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="963772B3-A83F-0397-1A85-38EF42E6503B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

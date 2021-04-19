@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="ESTADO_EVENTO" directorySegmentName="seg_0" id="E58B4ABB-D55D-71B3-5E64-843E006AB3AC">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7DF9B67B-CAA7-03E6-53F2-44C1FE99595E</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NOMBRE_ESTADO_EVENTO" id="51EC90DD-3F74-F567-2D01-7D29D9CA2852">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COLOR_EVENTO" id="E1033666-8D68-316C-E34E-0CC5895476F2">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_ESTADO_EVENTO" id="F7BF5216-6C6D-0DA5-6141-9789D9769223">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_ESTADO_EVENTO" id="A782FB54-4A25-FD0E-5B9F-5C73DB8E6E73">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_ESTADO_EVENTO" id="C2B01893-AAEE-CA6B-912F-5D7013E034AA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<existingIndex>A782FB54-4A25-FD0E-5B9F-5C73DB8E6E73</existingIndex>
+<indexSegment>9FA83FE6-6829-ADF8-490C-395E52BA9840</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

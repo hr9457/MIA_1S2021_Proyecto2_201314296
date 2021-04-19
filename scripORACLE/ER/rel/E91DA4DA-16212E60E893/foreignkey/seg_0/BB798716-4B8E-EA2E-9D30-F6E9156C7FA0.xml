@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BB798716-4B8E-EA2E-9D30-F6E9156C7FA0" containerWithKeyObject="9AE95422-B940-C3CC-0897-D127618B058A" localFKIndex="F7C14596-8337-EE80-D521-0C28EBF94F3A" name="FK_FASE_JORNADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_FASE_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.FASE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7C36A81D-4C88-0DC2-D618-FEFD5C7B8708</referredTableID>
+<keyObject>0EF7B548-0A6A-C3C4-594D-238E5511831A</keyObject>
+<referredKeyID>0EF7B548-0A6A-C3C4-594D-238E5511831A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_FASE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

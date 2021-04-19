@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3BB87D16-2874-4935-C91F-DE0448D3A7BD" containerWithKeyObject="F2A0DFD1-B257-A543-6190-4C01C4264C5D" localFKIndex="9ABC7ED2-30CF-3ED6-50E7-F56623A2CB73" name="FK_USUARIO_MEMBRESIA_PUNTUACION">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_USUARIO_MEMBRESIA_PUNTUACION</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:14 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.USUARIO_MEMBRESIA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>94D4BCC7-F363-F7C6-30D2-BD20F1E9BD41</referredTableID>
+<keyObject>ABB8EC58-AD9E-706B-731F-EE3B3045CC0E</keyObject>
+<referredKeyID>ABB8EC58-AD9E-706B-731F-EE3B3045CC0E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_USUARIO_MEMBRESIA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

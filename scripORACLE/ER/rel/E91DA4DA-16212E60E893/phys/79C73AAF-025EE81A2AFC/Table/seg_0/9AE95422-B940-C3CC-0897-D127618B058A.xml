@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="JORNADA" directorySegmentName="seg_0" id="9AE95422-B940-C3CC-0897-D127618B058A">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7DF9B67B-CAA7-03E6-53F2-44C1FE99595E</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="FK_ID_TEMPORADA" id="04E1C5BB-9F10-564C-1097-3A8AE1A5593A">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOMBRE_JORNADA" id="1B320DC4-B236-BA36-57D8-0A5E77C9DB90">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FK_ID_FASE" id="79B8EE1A-41DD-C7CA-9B61-34C30BABC5D6">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHA_INICIO_JORNADA" id="898D4C6D-FB5E-AB5F-EAD4-95B6CA4C0AB0">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHA_FINALIZACION_JORNADA" id="AA5A2F47-26FA-E7E6-0792-5E125B9CC0A3">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_JORNADA" id="F3295ADA-FD77-07BC-A1F8-8604FF2C00E6">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_JORNADA" id="1FF406A3-E905-C4CA-EF0C-885EF89CE7FA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TEMPORADA_JORNADA" id="683A3218-A18B-0F7F-28FB-B576CD9A27B1">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_FASE_JORNADA" id="8F8BB2A5-58C7-3EC6-0AFF-773E87763E14">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_FASE_JORNADA" id="F7C14596-8337-EE80-D521-0C28EBF94F3A">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_JORNADA" id="75D30F76-25CA-E80A-A99F-8C31121909C2">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<existingIndex>1FF406A3-E905-C4CA-EF0C-885EF89CE7FA</existingIndex>
+<indexSegment>9FA83FE6-6829-ADF8-490C-395E52BA9840</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5FBEDEE0-60EE-1601-AFF3-3E9292AFB678" containerWithKeyObject="F2A0DFD1-B257-A543-6190-4C01C4264C5D" localFKIndex="17E83A25-20B9-3C1F-F25F-0DAA85CBAB51" name="FK_TEMPORADA_PUNTUACION">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_TEMPORADA_PUNTUACION</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.TEMPORADA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>863197E4-E198-39BF-891A-AE7E64A3202E</referredTableID>
+<keyObject>F06C23A2-2723-3D08-4CB3-E388946C8CFA</keyObject>
+<referredKeyID>F06C23A2-2723-3D08-4CB3-E388946C8CFA</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_TEMPORADA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

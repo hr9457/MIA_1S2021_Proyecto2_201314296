@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="926DDB3B-0D99-2883-BB4E-0EF9E3DF6FD3" containerWithKeyObject="9039B567-7359-BAC9-E23C-EC47600D1C67" localFKIndex="BC0532C6-D612-C8BE-1982-185A4CF6216C" name="FK_ESTADO_EVENTO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_ESTADO_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.ESTADO_EVENTO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E58B4ABB-D55D-71B3-5E64-843E006AB3AC</referredTableID>
+<keyObject>C2B01893-AAEE-CA6B-912F-5D7013E034AA</keyObject>
+<referredKeyID>C2B01893-AAEE-CA6B-912F-5D7013E034AA</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_ESTADO_EVENTO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

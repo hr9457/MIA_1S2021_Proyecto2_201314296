@@ -1,0 +1,191 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F2A0DFD1-B257-A543-6190-4C01C4264C5D" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PUNTUACION">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PUNTUACION</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_PUNTUACION" id="05BB06B9-7B2A-8C9F-7682-6D38F5C93370">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>ID_PUNTUACION</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="P10" id="D6779075-8FC6-F150-63E7-DA1C1D138AB7">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>P10</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="P5" id="1957AE79-6128-A697-FF3E-8A81CFD4D241">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>P5</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="P3" id="65E5F9A8-300C-5F68-5D3B-77B1B1980F89">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>P3</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="P0" id="17425082-708F-6355-DD35-85F3C2577D1D">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>P0</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PUNTAJE" id="2E1AC8A1-8292-CEA8-01F9-ED8ACEA1B34B">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>PUNTAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="INCREMENTO" id="A10AE3D0-79CC-C2F7-145F-9A615EB9B0A0">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>INCREMENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FK_ID_TEMPORADA" id="35940A58-DDB3-FAEE-696C-2A969C4412B4">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>FK_ID_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5FBEDEE0-60EE-1601-AFF3-3E9292AFB678" referredColumn="DD99151E-E800-13B1-9DB6-7A083E6A2935"/>
+</associations>
+</Column>
+<Column name="FK_ID_USUARIO_MEMBRESIA" id="4F8761C1-D9C2-66B7-C96D-894352BA618D">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>PUNTUACION</sourceObjSchema>
+<sourceObjName>FK_ID_USUARIO_MEMBRESIA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3BB87D16-2874-4935-C91F-DE0448D3A7BD" referredColumn="30DF24EB-4DB8-1A7B-7844-12050B67B61D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="32256BE7-4C17-BF63-5060-34B3D0619F35" name="PK_PUNTUACION">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_PUNTUACION</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="05BB06B9-7B2A-8C9F-7682-6D38F5C93370"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="883A7E68-AA3A-0214-0C9A-0EEAB7469D82" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_PUNTUACION">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_PUNTUACION</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="05BB06B9-7B2A-8C9F-7682-6D38F5C93370"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="17E83A25-20B9-3C1F-F25F-0DAA85CBAB51" name="FK_TEMPORADA_PUNTUACION">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:13 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35940A58-DDB3-FAEE-696C-2A969C4412B4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9ABC7ED2-30CF-3ED6-50E7-F56623A2CB73" name="FK_USUARIO_MEMBRESIA_PUNTUACION">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:33:14 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F8761C1-D9C2-66B7-C96D-894352BA618D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

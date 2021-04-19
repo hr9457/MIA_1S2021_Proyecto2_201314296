@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="ESTADO_TEMPORADA" directorySegmentName="seg_0" id="CF15B627-F60D-EB26-E624-04EAC42CB6D2">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7DF9B67B-CAA7-03E6-53F2-44C1FE99595E</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NOMBRE_ESTADO_TEMPORADA" id="7650B367-9D9B-1EC2-E0BB-F04E7ACD78CA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_ESTADO_TEMPORADA" id="9E414C0E-CF2B-B67F-DDA6-EE631359F259">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_ESTADO_TEMPORADA" id="0AA56677-E703-B09B-AB7A-BD1EAAD023BA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_ESTADO_TEMPORADA" id="6A22D676-A983-9A74-8614-4F7A5631510D">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<existingIndex>0AA56677-E703-B09B-AB7A-BD1EAAD023BA</existingIndex>
+<indexSegment>9FA83FE6-6829-ADF8-490C-395E52BA9840</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

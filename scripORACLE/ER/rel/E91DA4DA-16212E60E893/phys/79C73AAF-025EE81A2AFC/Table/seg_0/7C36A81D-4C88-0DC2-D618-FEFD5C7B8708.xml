@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="FASE" directorySegmentName="seg_0" id="7C36A81D-4C88-0DC2-D618-FEFD5C7B8708">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:35:08 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7DF9B67B-CAA7-03E6-53F2-44C1FE99595E</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NOMBRE_FASE" id="76ECC715-8B9C-82A5-5E1C-FD471D7C53F3">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:35:08 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_FASE" id="7C91129E-CB95-EB48-38AB-3E3A1421FEC1">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:35:08 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_FASE" id="AB190C3A-6276-046C-FDC1-44483F47B226">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:35:08 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_FASE" id="0EF7B548-0A6A-C3C4-594D-238E5511831A">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:35:08 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<existingIndex>AB190C3A-6276-046C-FDC1-44483F47B226</existingIndex>
+<indexSegment>9FA83FE6-6829-ADF8-490C-395E52BA9840</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

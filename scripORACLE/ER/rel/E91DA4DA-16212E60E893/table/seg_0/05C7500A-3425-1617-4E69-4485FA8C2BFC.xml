@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="05C7500A-3425-1617-4E69-4485FA8C2BFC" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="RECOMPESA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>RECOMPESA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_RECOMPESA" id="F23F5DD3-19C0-9ADC-DD04-DBA3437841C0">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>RECOMPESA</sourceObjSchema>
+<sourceObjName>ID_RECOMPESA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="TOTAL_RECOMPESA" id="A411156C-B7E7-B90C-8F7A-2AA3E7E57D40">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>RECOMPESA</sourceObjSchema>
+<sourceObjName>TOTAL_RECOMPESA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,*,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FK_ID_PUNTUACION" id="42AA5F2F-C3A6-3105-58BB-F84A74B6C938">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>RECOMPESA</sourceObjSchema>
+<sourceObjName>FK_ID_PUNTUACION</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5AFE9366-9BF8-8E10-2676-120931AFD336" referredColumn="05BB06B9-7B2A-8C9F-7682-6D38F5C93370"/>
+</associations>
+</Column>
+<Column name="FK_ID_USUARIO" id="FE956F1A-7AB7-88B7-AEE6-B1337EC368BA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>RECOMPESA</sourceObjSchema>
+<sourceObjName>FK_ID_USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="52C3FA89-CEF0-DBF8-4156-CF7CCB3969E6" referredColumn="9A07F550-3BC6-4BA9-8BA0-D6CC65F0106A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="03115DB3-F00B-144D-4BA2-78512F99E5B6" name="PK_RECOMPESA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_RECOMPESA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F23F5DD3-19C0-9ADC-DD04-DBA3437841C0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0863E736-AED6-0B47-7D24-0C0BF07993A2" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_RECOMPESA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_RECOMPESA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F23F5DD3-19C0-9ADC-DD04-DBA3437841C0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9B019CAF-DB76-6EDF-BE03-4CEE0FC30FF7" name="FK_PUNTUACION_RECOMPESA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:19 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="42AA5F2F-C3A6-3105-58BB-F84A74B6C938"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2EDAD9D3-A563-8D9A-B298-A9614755DED5" name="FK_USUARIO_RECOMPESA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:20 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FE956F1A-7AB7-88B7-AEE6-B1337EC368BA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

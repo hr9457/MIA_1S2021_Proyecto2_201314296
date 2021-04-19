@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="TEMPORADA" directorySegmentName="seg_0" id="863197E4-E198-39BF-891A-AE7E64A3202E">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7DF9B67B-CAA7-03E6-53F2-44C1FE99595E</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NOMBRE_TEMPORADA" id="07633E6A-C544-2212-A9EE-DA4756175002">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHA_FINALIZACION_TEMPORADA" id="9184332F-6D17-CC36-8324-0DF2E39B0CCE">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PUNTUACION_TEMPORADA" id="97B780DE-BF43-2940-A880-DE545CE57C6C">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHA_INCIO_TEMPORADA" id="BA587EDC-DC87-24FB-05B8-92505B5A6E30">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FK_ID_ESTADO_TEMPORADA" id="C4DF8082-C2EA-1709-F1B5-C59522126C09">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_TEMPORADA" id="DD99151E-E800-13B1-9DB6-7A083E6A2935">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_TEMPORADA" id="F06C23A2-2723-3D08-4CB3-E388946C8CFA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_ESTADO_TEMPORADA" id="DDC76EA0-F21D-B9EB-A369-DF5C28AB36BD">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_TEMPORADA" id="8A8BB3F0-8A92-12E1-77E4-7DB25A324DEE">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<existingIndex>F06C23A2-2723-3D08-4CB3-E388946C8CFA</existingIndex>
+<indexSegment>9FA83FE6-6829-ADF8-490C-395E52BA9840</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

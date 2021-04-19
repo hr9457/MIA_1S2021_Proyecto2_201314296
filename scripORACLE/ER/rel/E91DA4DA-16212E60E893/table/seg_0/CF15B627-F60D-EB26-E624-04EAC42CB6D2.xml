@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CF15B627-F60D-EB26-E624-04EAC42CB6D2" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="ESTADO_TEMPORADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>ESTADO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_ESTADO_TEMPORADA" id="9E414C0E-CF2B-B67F-DDA6-EE631359F259">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>ESTADO_TEMPORADA</sourceObjSchema>
+<sourceObjName>ID_ESTADO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOMBRE_ESTADO_TEMPORADA" id="7650B367-9D9B-1EC2-E0BB-F04E7ACD78CA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>ESTADO_TEMPORADA</sourceObjSchema>
+<sourceObjName>NOMBRE_ESTADO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6A22D676-A983-9A74-8614-4F7A5631510D" name="PK_ESTADO_TEMPORADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_ESTADO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9E414C0E-CF2B-B67F-DDA6-EE631359F259"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0AA56677-E703-B09B-AB7A-BD1EAAD023BA" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_ESTADO_TEMPORADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_ESTADO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:34:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9E414C0E-CF2B-B67F-DDA6-EE631359F259"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

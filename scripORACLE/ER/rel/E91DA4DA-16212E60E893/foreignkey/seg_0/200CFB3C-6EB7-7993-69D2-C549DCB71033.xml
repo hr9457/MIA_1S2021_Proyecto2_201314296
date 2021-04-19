@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="200CFB3C-6EB7-7993-69D2-C549DCB71033" containerWithKeyObject="74B456CE-61E0-978D-C47B-F71BECD7BC34" localFKIndex="F5E7C9F3-A422-9952-35B2-528C3EDBE047" name="FK_USUARIO_ROL">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_USUARIO_ROL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.ROL</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C7A6DFA9-659C-01D0-ADBB-AEBCCBFD6678</referredTableID>
+<keyObject>8FA39C21-E09E-C431-CF64-689B62F1F1E7</keyObject>
+<referredKeyID>8FA39C21-E09E-C431-CF64-689B62F1F1E7</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_ROL</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

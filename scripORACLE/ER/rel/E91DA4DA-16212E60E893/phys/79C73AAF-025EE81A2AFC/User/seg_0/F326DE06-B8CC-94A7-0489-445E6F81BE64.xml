@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="HECTOR" directorySegmentName="seg_0" id="F326DE06-B8CC-94A7-0489-445E6F81BE64">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjName>HECTOR</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<defTableSpace>413C0495-2643-8EB1-739D-2A062E08B062</defTableSpace>
+<privileges>UNLIMITED TABLESPACE</privileges>
+</UserOraclev10g>

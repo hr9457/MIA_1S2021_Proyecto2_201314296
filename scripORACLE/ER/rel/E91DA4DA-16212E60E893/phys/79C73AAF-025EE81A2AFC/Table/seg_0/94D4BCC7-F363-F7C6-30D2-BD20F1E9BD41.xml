@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="USUARIO_MEMBRESIA" directorySegmentName="seg_0" id="94D4BCC7-F363-F7C6-30D2-BD20F1E9BD41">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7DF9B67B-CAA7-03E6-53F2-44C1FE99595E</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_USUARIO_MEMBRESIA" id="30DF24EB-4DB8-1A7B-7844-12050B67B61D">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="FK_ID_TEMPORADA" id="54C21A03-BF3A-143F-A298-CD165D5054A2">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FK_ID_MEMBRESIA" id="5FFAEDA9-2B83-300F-5BC4-8B6029955268">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FK_ID_USUARIO" id="BF8C14A3-64EE-643B-7DD2-616751EBCED6">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_USUARIO_MEMBRESIA" id="ABB8EC58-AD9E-706B-731F-EE3B3045CC0E">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<schemaObject>F58F26C7-1007-E1EB-51D3-B6722A55112B</schemaObject>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_USUARIO_USUARIO_MEMBRESIA" id="2DE43CEB-6CC0-251C-7370-682B5942BBD4">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:29 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_TEMPORADA_USUARIO_MEMBRESIA" id="818AAC05-9A4A-0392-C288-28413F92BFE3">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_MEMBRESIA_USUARIO_MEMBRESIA" id="F9D36644-9DC0-D598-965D-A1782A23CB06">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_USUARIO_MEMBRESIA" id="FFE96B80-D508-098F-EDBF-51D72CEE71B0">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:31:28 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<segment>9FA83FE6-6829-ADF8-490C-395E52BA9840</segment>
+<tableSpace>413C0495-2643-8EB1-739D-2A062E08B062</tableSpace>
+<existingIndex>ABB8EC58-AD9E-706B-731F-EE3B3045CC0E</existingIndex>
+<indexSegment>9FA83FE6-6829-ADF8-490C-395E52BA9840</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="03A1BF0E-CBF2-D5C7-18E5-AD59F5AC16B9" containerWithKeyObject="9039B567-7359-BAC9-E23C-EC47600D1C67" localFKIndex="B5842308-DBD6-19A5-D144-2E70A57B042E" name="FK_DEPORTE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.DEPORTE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>0EE785D6-4F40-AF4B-E97D-4A5A1B3D0146</referredTableID>
+<keyObject>CC097E97-E611-60E1-71B2-1E9405A84525</keyObject>
+<referredKeyID>CC097E97-E611-60E1-71B2-1E9405A84525</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_DEPORTE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

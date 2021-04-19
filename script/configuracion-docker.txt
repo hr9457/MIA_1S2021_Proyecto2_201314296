@@ -1,0 +1,6 @@
+
+**** configuracion para arrancar el docker  ****
+
+docker start  29636e21dca9 
+docker exec -it 29636e21dca9  bash
+./post_install.sh

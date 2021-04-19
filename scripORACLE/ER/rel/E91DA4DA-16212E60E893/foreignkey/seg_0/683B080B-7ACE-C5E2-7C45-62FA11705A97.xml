@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="683B080B-7ACE-C5E2-7C45-62FA11705A97" containerWithKeyObject="79694396-919C-4A3B-D60D-2A95A572889C" localFKIndex="AEA0A71A-B35D-13A5-EDBA-3162FB5E636B" name="FK_EVENTO_DEPORTIVO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_EVENTO_DEPORTIVO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:58 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.EVENTO_DEPORTIVO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9039B567-7359-BAC9-E23C-EC47600D1C67</referredTableID>
+<keyObject>5552501F-0EEC-42FE-6575-CE84E90410B8</keyObject>
+<referredKeyID>5552501F-0EEC-42FE-6575-CE84E90410B8</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_EVENTO_DEPORTIVO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

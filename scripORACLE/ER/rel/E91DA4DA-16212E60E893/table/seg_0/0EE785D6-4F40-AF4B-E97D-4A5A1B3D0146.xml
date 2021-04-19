@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0EE785D6-4F40-AF4B-E97D-4A5A1B3D0146" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="DEPORTE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_DEPORTE" id="41A025BB-5631-5675-47D0-B8F5808595DC">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>DEPORTE</sourceObjSchema>
+<sourceObjName>ID_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOMBRE_DEPORTE" id="4F360286-F393-F8EA-6FF8-2CA36005F80C">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>DEPORTE</sourceObjSchema>
+<sourceObjName>NOMBRE_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IMAGEN_DEPORTE" id="7609A3CB-4948-F915-49E1-420668B47A3C">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>DEPORTE</sourceObjSchema>
+<sourceObjName>IMAGEN_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COLOR_DEPORTE" id="1D5906E5-EED1-8169-5D2F-54E4A1418924">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>DEPORTE</sourceObjSchema>
+<sourceObjName>COLOR_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CC097E97-E611-60E1-71B2-1E9405A84525" name="PK_DEPORTE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41A025BB-5631-5675-47D0-B8F5808595DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24A37302-185E-F61A-63B0-91291279B2DC" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_DEPORTE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:28:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="41A025BB-5631-5675-47D0-B8F5808595DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

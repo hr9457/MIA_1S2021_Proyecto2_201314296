@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EE7C51EC-4980-10E8-3C4F-876DD036BB83" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="MENSAJE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>MENSAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:21 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_MENSAJE" id="9ECC45D6-E9C0-1611-46C2-C8FF34055208">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>MENSAJE</sourceObjSchema>
+<sourceObjName>ID_MENSAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="FECHA_MENSAJE" id="590398D8-C1DA-598E-3553-A4548A85A1A7">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>MENSAJE</sourceObjSchema>
+<sourceObjName>FECHA_MENSAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CONTENIDO_MENSAJE" id="FDB3F922-783A-F53C-DA77-13433F3B1077">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>MENSAJE</sourceObjSchema>
+<sourceObjName>CONTENIDO_MENSAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FK_ID_CHAT" id="47346468-9EF8-5722-FCFC-1CC59FBE4122">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>MENSAJE</sourceObjSchema>
+<sourceObjName>FK_ID_CHAT</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7E98316D-0E71-4080-73A7-40A74B191FDB" referredColumn="87C6E1DA-9D8C-73ED-1144-0BF63248C914"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="62074733-32FC-42AB-93F1-913EFEDFAA78" name="PK_MENSAJE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_MENSAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9ECC45D6-E9C0-1611-46C2-C8FF34055208"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3D2F124A-16DE-D30B-B9DA-A6F68A476347" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_MENSAJE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_MENSAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9ECC45D6-E9C0-1611-46C2-C8FF34055208"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D1B7133B-2D8F-985F-A4CB-FDC1F0E0E693" name="FK_CHAT_MENSAJE">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47346468-9EF8-5722-FCFC-1CC59FBE4122"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

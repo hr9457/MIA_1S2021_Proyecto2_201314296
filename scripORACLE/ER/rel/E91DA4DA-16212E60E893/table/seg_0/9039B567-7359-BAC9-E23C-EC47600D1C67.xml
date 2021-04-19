@@ -1,0 +1,231 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9039B567-7359-BAC9-E23C-EC47600D1C67" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="EVENTO_DEPORTIVO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>EVENTO_DEPORTIVO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_EVENTO_DEPORTIVO" id="D579FCF4-775B-205F-2133-E2C5CE13EDB1">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>ID_EVENTO_DEPORTIVO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="FECHA_EVENTO" id="DB4B48F9-9319-FFBA-4DA8-D5F7EE754031">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>FECHA_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MARCADOR_LOCAL" id="538F6790-BAA3-EFC7-046C-B81A6289B2CF">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>MARCADOR_LOCAL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MARCADOR_VISITANTE" id="617FAD85-B9C9-0626-2889-E562E75DF5F8">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>MARCADOR_VISITANTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FK_ID_ESTADO_EVENTO" id="98254B22-B915-AC04-4EE7-0D011D9CAD85">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>FK_ID_ESTADO_EVENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="926DDB3B-0D99-2883-BB4E-0EF9E3DF6FD3" referredColumn="F7BF5216-6C6D-0DA5-6141-9789D9769223"/>
+</associations>
+</Column>
+<Column name="FK_ID_DEPORTE" id="30BE33B1-1F4E-71BD-26BF-20C243128352">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>FK_ID_DEPORTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="03A1BF0E-CBF2-D5C7-18E5-AD59F5AC16B9" referredColumn="41A025BB-5631-5675-47D0-B8F5808595DC"/>
+</associations>
+</Column>
+<Column name="FK_ID_EQUIPO_JUGADOR_LOCAL" id="325A869F-B6C9-FB9D-01F1-01C882D9B12B">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>FK_ID_EQUIPO_JUGADOR_LOCAL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="35F1348C-CC17-7A8A-C4C2-FECE411BC094" referredColumn="04D146B6-5451-6118-9562-AA0B7D71BC38"/>
+</associations>
+</Column>
+<Column name="FK_ID_EQUIPO_JUGADOR_VISITANTE" id="37326086-26D9-9582-B561-652C4308F4EB">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>FK_ID_EQUIPO_JUGADOR_VISITANTE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="11EC5BC1-D221-FDCE-122E-CFC98C37DF32" referredColumn="04D146B6-5451-6118-9562-AA0B7D71BC38"/>
+</associations>
+</Column>
+<Column name="FK_ID_JORNADA" id="EFD3A230-B32B-6BBF-9A70-9E4AFCEA4188">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>EVENTO_DEPORTIVO</sourceObjSchema>
+<sourceObjName>FK_ID_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4B194501-8608-F3C8-8A05-3073E2D1CD63" referredColumn="F3295ADA-FD77-07BC-A1F8-8604FF2C00E6"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="14160717-75C9-0CE7-7C31-327AB385D658" name="PK_EVENTO_DEPORTIVO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_EVENTO_DEPORTIVO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D579FCF4-775B-205F-2133-E2C5CE13EDB1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5552501F-0EEC-42FE-6575-CE84E90410B8" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_EVENTO_DEPORTIVO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_EVENTO_DEPORTIVO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D579FCF4-775B-205F-2133-E2C5CE13EDB1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B5842308-DBD6-19A5-D144-2E70A57B042E" name="FK_DEPORTE">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="30BE33B1-1F4E-71BD-26BF-20C243128352"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1690F5BD-0FEB-D0A9-C327-558F1E4FB2E2" name="FK_EQUIP_LOCAL">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="325A869F-B6C9-FB9D-01F1-01C882D9B12B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="169572F8-18A3-F745-217F-98321CD84CB6" name="FK_EQUIPO_VISITANTE">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="37326086-26D9-9582-B561-652C4308F4EB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BC0532C6-D612-C8BE-1982-185A4CF6216C" name="FK_ESTADO_EVENTO">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="98254B22-B915-AC04-4EE7-0D011D9CAD85"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2E6BA28C-68F3-BCE9-4595-0D0C144E3F50" name="FK_JORNADA_EVENTO_DEPORTIVO">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EFD3A230-B32B-6BBF-9A70-9E4AFCEA4188"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

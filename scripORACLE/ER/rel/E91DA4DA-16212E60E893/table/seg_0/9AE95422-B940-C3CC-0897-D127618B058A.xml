@@ -1,0 +1,162 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9AE95422-B940-C3CC-0897-D127618B058A" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="JORNADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_JORNADA" id="F3295ADA-FD77-07BC-A1F8-8604FF2C00E6">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>JORNADA</sourceObjSchema>
+<sourceObjName>ID_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOMBRE_JORNADA" id="1B320DC4-B236-BA36-57D8-0A5E77C9DB90">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>JORNADA</sourceObjSchema>
+<sourceObjName>NOMBRE_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_INICIO_JORNADA" id="898D4C6D-FB5E-AB5F-EAD4-95B6CA4C0AB0">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>JORNADA</sourceObjSchema>
+<sourceObjName>FECHA_INICIO_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_FINALIZACION_JORNADA" id="AA5A2F47-26FA-E7E6-0792-5E125B9CC0A3">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>JORNADA</sourceObjSchema>
+<sourceObjName>FECHA_FINALIZACION_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FK_ID_FASE" id="79B8EE1A-41DD-C7CA-9B61-34C30BABC5D6">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>JORNADA</sourceObjSchema>
+<sourceObjName>FK_ID_FASE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BB798716-4B8E-EA2E-9D30-F6E9156C7FA0" referredColumn="7C91129E-CB95-EB48-38AB-3E3A1421FEC1"/>
+</associations>
+</Column>
+<Column name="FK_ID_TEMPORADA" id="04E1C5BB-9F10-564C-1097-3A8AE1A5593A">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>JORNADA</sourceObjSchema>
+<sourceObjName>FK_ID_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="625F2839-D83D-EB76-1EF7-271204A5953C" referredColumn="DD99151E-E800-13B1-9DB6-7A083E6A2935"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="75D30F76-25CA-E80A-A99F-8C31121909C2" name="PK_JORNADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3295ADA-FD77-07BC-A1F8-8604FF2C00E6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1FF406A3-E905-C4CA-EF0C-885EF89CE7FA" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_JORNADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_JORNADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F3295ADA-FD77-07BC-A1F8-8604FF2C00E6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8F8BB2A5-58C7-3EC6-0AFF-773E87763E14" name="FK_FASE_JORNADA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="F7C14596-8337-EE80-D521-0C28EBF94F3A" name="FK_FASE_JORNADA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="79B8EE1A-41DD-C7CA-9B61-34C30BABC5D6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="683A3218-A18B-0F7F-28FB-B576CD9A27B1" name="FK_TEMPORADA_JORNADA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="04E1C5BB-9F10-564C-1097-3A8AE1A5593A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

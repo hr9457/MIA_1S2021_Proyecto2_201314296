@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7E98316D-0E71-4080-73A7-40A74B191FDB" containerWithKeyObject="EE7C51EC-4980-10E8-3C4F-876DD036BB83" localFKIndex="D1B7133B-2D8F-985F-A4CB-FDC1F0E0E693" name="FK_CHAT_MENSAJE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_CHAT_MENSAJE</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.CHAT</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A5B65FC8-39F9-5FBA-ACA7-4BD29803FCB0</referredTableID>
+<keyObject>C6D0E163-CA01-F957-C12F-C54821288C85</keyObject>
+<referredKeyID>C6D0E163-CA01-F957-C12F-C54821288C85</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_CHAT</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

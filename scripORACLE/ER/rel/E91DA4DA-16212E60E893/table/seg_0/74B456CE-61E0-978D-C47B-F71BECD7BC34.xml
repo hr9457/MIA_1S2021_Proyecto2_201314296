@@ -1,0 +1,185 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="74B456CE-61E0-978D-C47B-F71BECD7BC34" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="USUARIO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:48 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_USUARIO" id="9A07F550-3BC6-4BA9-8BA0-D6CC65F0106A">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>ID_USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="USARNAME" id="53EBED1A-81D3-1B0F-3A1F-6AD23A3D9C29">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>USARNAME</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE_USUARIO" id="E5A17DE7-BE3A-E98F-6259-1A2C337D4AA1">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>NOMBRE_USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="APELLIDO_USUARIO" id="7437C7CE-50F0-D07B-094F-D085DA8D8824">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>APELLIDO_USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_NACIMIENTO" id="0BF01F88-6506-DC8B-CA57-D8871F0AE5F1">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>FECHA_NACIMIENTO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_REGISTRO" id="995F3876-1BEE-D8AA-AA16-8AB80D86032D">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>FECHA_REGISTRO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CORREO_ELECTRONICO" id="8B917A5F-F538-39AB-F303-328BC7AE6BCE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>CORREO_ELECTRONICO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FOTO_PERFIL" id="149560AC-8165-0444-8AB4-C6B6E75AACA1">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>FOTO_PERFIL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FK_ID_ROL" id="F1F0E6B6-70F4-631B-809F-3F94E83B57F0">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>USUARIO</sourceObjSchema>
+<sourceObjName>FK_ID_ROL</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="200CFB3C-6EB7-7993-69D2-C549DCB71033" referredColumn="963772B3-A83F-0397-1A85-38EF42E6503B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="617BB027-47F7-764C-D69E-93C212319C2A" name="PK_USUARIO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A07F550-3BC6-4BA9-8BA0-D6CC65F0106A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7224B69C-EB63-7FA6-CC1E-85AE55698B49" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_USUARIO">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A07F550-3BC6-4BA9-8BA0-D6CC65F0106A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F5E7C9F3-A422-9952-35B2-528C3EDBE047" name="FK_USUARIO_ROL">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:29:49 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F1F0E6B6-70F4-631B-809F-3F94E83B57F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

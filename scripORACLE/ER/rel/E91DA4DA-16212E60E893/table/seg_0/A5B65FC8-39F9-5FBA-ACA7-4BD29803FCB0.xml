@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A5B65FC8-39F9-5FBA-ACA7-4BD29803FCB0" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="CHAT">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>CHAT</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:59 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_CHAT" id="87C6E1DA-9D8C-73ED-1144-0BF63248C914">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>CHAT</sourceObjSchema>
+<sourceObjName>ID_CHAT</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:59 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="FK_ID_USUARIO" id="1C0CA600-3439-8756-94A6-27B748B72DCC">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>CHAT</sourceObjSchema>
+<sourceObjName>FK_ID_USUARIO</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:59 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="06469F6D-1BBE-CF0C-9A06-EEDB6D52E3C9" referredColumn="9A07F550-3BC6-4BA9-8BA0-D6CC65F0106A"/>
+</associations>
+</Column>
+<Column name="FK_ID_USUARIO2" id="6D9018FF-3A46-C1E5-AA96-241091694EE1">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>CHAT</sourceObjSchema>
+<sourceObjName>FK_ID_USUARIO2</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:59 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D3E86D73-F5B5-5094-DCD9-7ABE5D2A718C" referredColumn="9A07F550-3BC6-4BA9-8BA0-D6CC65F0106A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F7F8AD37-F772-1277-5AD5-CE12D48345D2" name="PK_CHAR">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_CHAR</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:59 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="87C6E1DA-9D8C-73ED-1144-0BF63248C914"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C6D0E163-CA01-F957-C12F-C54821288C85" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_CHAR">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_CHAR</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:59 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="87C6E1DA-9D8C-73ED-1144-0BF63248C914"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6BEE2ECE-97A7-7D7C-2760-136E41F005A4" name="FK_USUARIO_CHAT">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:36:59 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1C0CA600-3439-8756-94A6-27B748B72DCC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D662E014-6316-6FC2-5BEB-18285E95F150" name="FK_USUARIO2_CHAT">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:37:00 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6D9018FF-3A46-C1E5-AA96-241091694EE1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

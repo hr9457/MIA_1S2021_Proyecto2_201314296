@@ -1,0 +1,144 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="863197E4-E198-39BF-891A-AE7E64A3202E" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="TEMPORADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:22 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_TEMPORADA" id="DD99151E-E800-13B1-9DB6-7A083E6A2935">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>TEMPORADA</sourceObjSchema>
+<sourceObjName>ID_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOMBRE_TEMPORADA" id="07633E6A-C544-2212-A9EE-DA4756175002">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>TEMPORADA</sourceObjSchema>
+<sourceObjName>NOMBRE_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_INCIO_TEMPORADA" id="BA587EDC-DC87-24FB-05B8-92505B5A6E30">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>TEMPORADA</sourceObjSchema>
+<sourceObjName>FECHA_INCIO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_FINALIZACION_TEMPORADA" id="9184332F-6D17-CC36-8324-0DF2E39B0CCE">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>TEMPORADA</sourceObjSchema>
+<sourceObjName>FECHA_FINALIZACION_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PUNTUACION_TEMPORADA" id="97B780DE-BF43-2940-A880-DE545CE57C6C">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>TEMPORADA</sourceObjSchema>
+<sourceObjName>PUNTUACION_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>*</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,*,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FK_ID_ESTADO_TEMPORADA" id="C4DF8082-C2EA-1709-F1B5-C59522126C09">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>TEMPORADA</sourceObjSchema>
+<sourceObjName>FK_ID_ESTADO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="84DAFA2D-5B81-EF75-A81F-DD09D33B4673" referredColumn="9E414C0E-CF2B-B67F-DDA6-EE631359F259"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8A8BB3F0-8A92-12E1-77E4-7DB25A324DEE" name="PK_TEMPORADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DD99151E-E800-13B1-9DB6-7A083E6A2935"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F06C23A2-2723-3D08-4CB3-E388946C8CFA" schemaObject="F58F26C7-1007-E1EB-51D3-B6722A55112B" name="PK_TEMPORADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>PK_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DD99151E-E800-13B1-9DB6-7A083E6A2935"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DDC76EA0-F21D-B9EB-A369-DF5C28AB36BD" name="FK_ESTADO_TEMPORADA">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C4DF8082-C2EA-1709-F1B5-C59522126C09"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

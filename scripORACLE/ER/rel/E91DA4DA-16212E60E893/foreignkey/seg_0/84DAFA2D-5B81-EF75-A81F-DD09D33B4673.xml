@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="84DAFA2D-5B81-EF75-A81F-DD09D33B4673" containerWithKeyObject="863197E4-E198-39BF-891A-AE7E64A3202E" localFKIndex="DDC76EA0-F21D-B9EB-A369-DF5C28AB36BD" name="FK_ESTADO_TEMPORADA">
+<sourceConnName>proyecto2</sourceConnName>
+<sourceObjSchema>HECTOR</sourceObjSchema>
+<sourceObjName>FK_ESTADO_TEMPORADA</sourceObjName>
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:32:23 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>HECTOR.ESTADO_TEMPORADA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CF15B627-F60D-EB26-E624-04EAC42CB6D2</referredTableID>
+<keyObject>6A22D676-A983-9A74-8614-4F7A5631510D</keyObject>
+<referredKeyID>6A22D676-A983-9A74-8614-4F7A5631510D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_ESTADO_TEMPORADA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

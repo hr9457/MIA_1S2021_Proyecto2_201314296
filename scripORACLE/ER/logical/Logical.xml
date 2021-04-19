@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="1FD24041-F46A-0E04-6DE5-42CE8F80A700" mainViewID="4DDA65DF-1211-1378-F67A-794C8E8AFD5F">
+<createdBy>hector</createdBy>
+<createdTime>2021-04-19 04:27:10 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
