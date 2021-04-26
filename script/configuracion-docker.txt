@@ -4,3 +4,47 @@
 docker start  29636e21dca9 
 docker exec -it 29636e21dca9  bash
 ./post_install.sh
+docker stop 29636e21dca9 
+
+
+insert into rol(nombre_rol) values ('administrador');
+insert into rol(nombre_rol) values ('usuario');
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol)
+values('administrador','josue','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',1);
+
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol)
+values('usuario','hector','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',2);
+
+select * from rol;
+
+select * from usuario;
+
+
+
+
+insert into rol(nombre_rol) values ('administrador');
+insert into rol(nombre_rol) values ('usuario');
+
+select * from rol;
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol)
+values('administrador','josue','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',1);
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol,password)
+values('administrador','josue','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',1,'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol)
+values('usuario','hector','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',2);
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol)
+values('usuario','edson','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',2);
+
+delete from usuario where id_usuario=2;
+
+select * from usuario;
+
+select usuario.nombre_usuario from usuario
+where usuario.usarname = 'administrador';
