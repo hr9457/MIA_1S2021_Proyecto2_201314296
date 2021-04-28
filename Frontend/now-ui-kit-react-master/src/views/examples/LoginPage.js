@@ -69,32 +69,32 @@ function LoginPage() {
   return (
     <>
       {/* <ExamplesNavbar /> */}
-      <div className="page-header clear-filter" filter-color="blue">
+      <div className="page-header clear-filter">
         <div
-          className="page-header-image"
-          style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")",
-          }}
+          // className="page-header-image"
+          // style={{
+          //   backgroundImage: "url(" + require("assets/img/login.jpg") + ")",
+          // }}
         ></div>
-        <div className="content">
+        <div >
           <Container>
-            <Col className="ml-auto mr-auto" md="4">
-              <Card className="card-login card-plain">
+            <Col className="ml-auto mr-auto" md="7">
+              <Card className="card-login card-plain" >
                 <Form action="" className="form" method="">
                   <CardHeader className="text-center">
-                    {/* <div className="logo-container">
+                    <div >
                       <img
                         alt="..."
                         src={require("assets/img/now-logo.png")}
                       ></img>
-                    </div> */}
+                    </div>
                   </CardHeader>
                   <CardBody>
                     <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (firstFocus ? " input-group-focus" : "")
-                      }
+                      // className={
+                      //   "no-border input-lg" +
+                      //   (firstFocus ? " input-group-focus" : "")
+                      // }
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
@@ -109,15 +109,15 @@ function LoginPage() {
                         // funcion para captura de datos 
                         onChange = {handleInputChange}   
                         //  
-                        onFocus={() => setFirstFocus(true)}
-                        onBlur={() => setFirstFocus(false)}
+                        // onFocus={() => setFirstFocus(true)}
+                        // onBlur={() => setFirstFocus(false)}
                       ></Input>
                     </InputGroup>
                     <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (lastFocus ? " input-group-focus" : "")
-                      }
+                      // className={
+                      //   "no-border input-lg" +
+                      //   (lastFocus ? " input-group-focus" : "")
+                      // }
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
@@ -132,8 +132,8 @@ function LoginPage() {
                         // funcion para captura de datos 
                         onChange = {handleInputChange}   
                         //  
-                        onFocus={() => setLastFocus(true)}
-                        onBlur={() => setLastFocus(false)}
+                        // onFocus={() => setLastFocus(true)}
+                        // onBlur={() => setLastFocus(false)}
                       ></Input>
                     </InputGroup>
                   </CardBody>
@@ -143,7 +143,7 @@ function LoginPage() {
                       block
                       className="btn-round"
                       color="info"
-                      href="#pablo"
+                      // href="#pablo"
                       size="lg"
                       onClick={enviarDatos}
                       >

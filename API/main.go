@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/gorilla/mux"
 	_ "github.com/mattn/go-oci8"
@@ -56,8 +57,8 @@ type nuevo_usuario struct {
 	FECHA_REGISTRO   string
 	CORREO           string
 	FOTO_PERFIL      string
-	ROL              int
 	PASSWORD         string
+	// ROL              int
 }
 
 // ****************************************************************************
@@ -205,22 +206,24 @@ func insertar_usuario(usuario nuevo_usuario) error {
 
 // API - SET para insertar usuario nuevos en la base de datos
 func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
+	today := time.Now()
 	var usuario nuevo_usuario
 	reqBody, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(reqBody, &usuario)
-	fmt.Println(usuario.USERNAME)
-	fmt.Println(usuario.NOMBRE)
-	fmt.Println(usuario.APELLIDO)
-	fmt.Println(usuario.FECHA_NACIMIENTO)
-	fmt.Println(usuario.FECHA_REGISTRO)
-	fmt.Println(usuario.CORREO)
-	fmt.Println(usuario.FOTO_PERFIL)
-	fmt.Println(usuario.ROL)
-	fmt.Println(usuario.PASSWORD)
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
+	// fmt.Println(usuario.USERNAME)
+	// fmt.Println(usuario.NOMBRE)
+	// fmt.Println(usuario.APELLIDO)
+	// fmt.Println(usuario.FECHA_NACIMIENTO)
+	// fmt.Println(today.Format("2006-01-02 15:04:05"))
+	// fmt.Println(usuario.CORREO)
+	// fmt.Println(usuario.FOTO_PERFIL)
+	// // fmt.Println(usuario.ROL)
+	// fmt.Println(usuario.PASSWORD)
 	//
+	usuario.FECHA_REGISTRO = today.Format("2006-01-02 15:04:05")
 	// insertar_usuario(usuario.USERNAME, usuario.NOMBRE, usuario.APELLIDO, usuario.FECHA_NACIMIENTO, usuario.FECHA_REGISTRO, usuario.CORREO, usuario.FOTO_PERFIL, usuario.PASSWORD, usuario.ROL)
 	error := insertar_usuario(usuario)
 	if error != nil {
