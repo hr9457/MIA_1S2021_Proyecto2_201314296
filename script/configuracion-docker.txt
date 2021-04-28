@@ -48,3 +48,13 @@ select * from usuario;
 
 select usuario.nombre_usuario from usuario
 where usuario.usarname = 'administrador';
+
+
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol,password) 
+values('daniel','daniel','villagran','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',2,'123');
+
+
+
+
+select * from  usuario; 

@@ -25,6 +25,12 @@ import IniciarSession from "views/examples/session.js"
 
 
 
+// funcion para redirigir al formulario de registro
+function redirigir_formulario(){
+  window.location.href="./registro-usuario";
+}
+
+
 function LoginPage() {  
 
   // estrutra de los datos
@@ -150,7 +156,7 @@ function LoginPage() {
                         <a
                           className="link"
                           href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={redirigir_formulario}
                         >
                           Crear Cuenta
                         </a>

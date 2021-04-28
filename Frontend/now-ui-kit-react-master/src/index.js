@@ -31,12 +31,14 @@ import LoginPage from "views/examples/LoginPage.js";
 // import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Menu from "views/MenuUsuario/menuUsuario.js"
+import Formulario from "views/FormulaRegistro/formularioUsuario.js"
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
 
       <Switch>
+        <Route exact path="/registro-usuario" component={Formulario}/>
         <Route exact path="/perfil" component={ProfilePage}/>
         <Route exact path="/menu"  component={Menu}/>
         <Route path="/login-page" render={(props) => <LoginPage {...props} />} />

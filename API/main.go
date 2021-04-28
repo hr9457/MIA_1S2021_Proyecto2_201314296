@@ -47,6 +47,19 @@ type session struct {
 	TIPO     int
 }
 
+// struct para insertar un usuario en la base de datos
+type nuevo_usuario struct {
+	USERNAME         string
+	NOMBRE           string
+	APELLIDO         string
+	FECHA_NACIMIENTO string
+	FECHA_REGISTRO   string
+	CORREO           string
+	FOTO_PERFIL      string
+	ROL              int
+	PASSWORD         string
+}
+
 // ****************************************************************************
 // ****************************************************************************
 // ****************************************************************************
@@ -166,12 +179,58 @@ func consultar_usuario(user_name, password_usuario string) ([]session, error) {
 	return usuario, nil
 }
 
+// consulta para insertar un nuevo usuario
+func insertar_usuario(usuario nuevo_usuario) error {
+
+	// obtener coneccion
+	db, error := obtenerConeccion()
+
+	if error != nil {
+		fmt.Println("Error al obtener la conexion con DB")
+		return error
+	}
+	defer db.Close()
+
+	_, error = db.Exec("insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol,password)	values('" + usuario.USERNAME + "','" + usuario.NOMBRE + "','" + usuario.APELLIDO + "',TIMESTAMP '" + usuario.FECHA_NACIMIENTO + "',TIMESTAMP '" + usuario.FECHA_REGISTRO + "','" + usuario.CORREO + "','" + usuario.FOTO_PERFIL + "',2,'" + usuario.PASSWORD + "')")
+	// fmt.Println(columna)
+	// fmt.Println("usuario registrado")
+	return error
+}
+
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
 
+// API - SET para insertar usuario nuevos en la base de datos
+func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
+	var usuario nuevo_usuario
+	reqBody, _ := ioutil.ReadAll(r.Body)
+	json.Unmarshal(reqBody, &usuario)
+	fmt.Println(usuario.USERNAME)
+	fmt.Println(usuario.NOMBRE)
+	fmt.Println(usuario.APELLIDO)
+	fmt.Println(usuario.FECHA_NACIMIENTO)
+	fmt.Println(usuario.FECHA_REGISTRO)
+	fmt.Println(usuario.CORREO)
+	fmt.Println(usuario.FOTO_PERFIL)
+	fmt.Println(usuario.ROL)
+	fmt.Println(usuario.PASSWORD)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
+	//
+	// insertar_usuario(usuario.USERNAME, usuario.NOMBRE, usuario.APELLIDO, usuario.FECHA_NACIMIENTO, usuario.FECHA_REGISTRO, usuario.CORREO, usuario.FOTO_PERFIL, usuario.PASSWORD, usuario.ROL)
+	error := insertar_usuario(usuario)
+	if error != nil {
+		fmt.Println("Error al registrar un usuario \n", error)
+	} else {
+		fmt.Println("Usuario registrado")
+	}
+}
+
+// pureba de get para obtener los estados registrado para los eventos
 func get_estadosEventos(w http.ResponseWriter, r *http.Request) {
 	estados, err := consultar_estadoEvento()
 	if err != nil {
@@ -223,6 +282,7 @@ func get_login(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// api para realizar una prueba post
 func prueba_post(w http.ResponseWriter, r *http.Request) {
 	var datos usuario_logeado
 	reqBody, _ := ioutil.ReadAll(r.Body)
@@ -235,8 +295,11 @@ func prueba_post(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
+// funcion prinsipal
 func main() {
+	fmt.Println("Server on Port:4000")
 
+	// inicializacion de lor router
 	router := mux.NewRouter().StrictSlash(true)
 
 	router.HandleFunc("/estado", get_estadosEventos)
@@ -247,6 +310,9 @@ func main() {
 
 	// router para hacer la consuta del login
 	router.HandleFunc("/login", get_login).Methods("POST")
+
+	// router para registar un usuario nuevo
+	router.HandleFunc("/registro_usuario", set_usuarioNuevo).Methods("POST")
 
 	log.Fatal(http.ListenAndServe(":4000", router))
 
