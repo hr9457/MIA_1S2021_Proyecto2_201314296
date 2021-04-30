@@ -61,6 +61,12 @@ type nuevo_usuario struct {
 	// ROL              int
 }
 
+// struct para confirmacion de actividades dentro de la base de datos
+type confirmacion struct {
+	MENSAJE string
+	TIPO    int
+}
+
 // ****************************************************************************
 // ****************************************************************************
 // ****************************************************************************
@@ -227,8 +233,22 @@ func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
 	// insertar_usuario(usuario.USERNAME, usuario.NOMBRE, usuario.APELLIDO, usuario.FECHA_NACIMIENTO, usuario.FECHA_REGISTRO, usuario.CORREO, usuario.FOTO_PERFIL, usuario.PASSWORD, usuario.ROL)
 	error := insertar_usuario(usuario)
 	if error != nil {
+		// mensaje de confirmacion para el Frontend
+		var confirmacion_error confirmacion
+		confirmacion_error.MENSAJE = "Error al registrar un usuario"
+		confirmacion_error.TIPO = 0
+		// conversion a JSON para enviar
+		json.NewEncoder(w).Encode(confirmacion_error)
+		//
 		fmt.Println("Error al registrar un usuario \n", error)
 	} else {
+		// mensaje de confirmacion para el Frontend
+		var confirmacion_exitosa confirmacion
+		confirmacion_exitosa.MENSAJE = "Usuario Registrado"
+		confirmacion_exitosa.TIPO = 1
+		// conversion a JSON para enviar
+		json.NewEncoder(w).Encode(confirmacion_exitosa)
+		//
 		fmt.Println("Usuario registrado")
 	}
 }

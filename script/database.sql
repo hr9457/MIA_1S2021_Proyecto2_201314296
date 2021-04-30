@@ -120,8 +120,7 @@ CREATE TABLE evento_deportivo(
 -- tabla para guardar los usuarios 
 CREATE TABLE usuario(
     id_usuario NUMBER GENERATED ALWAYS AS IDENTITY START WITH 1 INCREMENT BY 1,
-    usarname VARCHAR2(20) NOT NULL,
-    password_usuario VARCHAR2(100) NOT NULL,
+    usarname VARCHAR2(20) NOT NULL,    
     nombre_usuario VARCHAR2(30) NOT NULL,
     apellido_usuario VARCHAR2(30) NOT NULL,
     fecha_nacimiento TIMESTAMP NOT NULL,
@@ -129,6 +128,7 @@ CREATE TABLE usuario(
     correo_electronico VARCHAR2(30) NOT NULL ,
     foto_perfil VARCHAR2(200) NOT NULL ,
     fk_id_rol NUMBER NOT NULL,
+    password VARCHAR2(100) NOT NULL,
     CONSTRAINT pk_usuario PRIMARY KEY (id_usuario),
     CONSTRAINT fk_usuario_rol FOREIGN KEY (fk_id_rol) REFERENCES rol(id_rol) 
 );

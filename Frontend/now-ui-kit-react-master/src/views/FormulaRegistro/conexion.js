@@ -20,19 +20,19 @@ async function conexion(username,nombre,apellido,fecha_nacimiento,
     fecha_nacimiento:''+fecha_nacimiento+' 00:00:00',fecha_registro:''+fecha_registro,
     correo:''+correo,foto_perfil:''+foto_perfil,password:''+sha256(password)}
 
-    fetch(url,{
+    let respuesta; 
+
+    await fetch(url,{
         method:'POST',
         body: JSON.stringify(data)
-    })
-    .then(res=>res.json())
-    .then(Response=>{
+    }) 
+    .then(Response => Response.json())
+    .then(function(jsons){
+        console.log(jsons);
+        respuesta = jsons;
+    })  
 
-    })
-    .catch(error=>{
-        console.error('Error',error)
-        console.log('Error',error)
-    })
-
+    return respuesta;
 }
 
 export default conexion;

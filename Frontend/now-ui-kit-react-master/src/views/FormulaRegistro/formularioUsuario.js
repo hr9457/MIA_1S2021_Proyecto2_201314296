@@ -11,6 +11,9 @@ import InputGroup from 'reactstrap/lib/InputGroup';
 import InputGroupAddon from 'reactstrap/lib/InputGroupAddon';
 import InputGroupText from 'reactstrap/lib/InputGroupText';
 import Row from 'reactstrap/lib/Row';
+import swal from 'sweetalert';
+import {FilePicker} from 'react-file-picker';
+import {ImagePicker} from 'react-file-picker'
 
 
 import conexion from 'views/FormulaRegistro/conexion.js'
@@ -19,6 +22,16 @@ import conexion from 'views/FormulaRegistro/conexion.js'
 
 
 function Registro(){
+
+    // alertas
+    const mostrarAlerta=(titulo,mensaje,icono)=>{
+        swal({
+            title:""+titulo,
+            text:""+mensaje,
+            icon:""+icono,
+            button:"Aceptar"
+        })
+    }
 
     // estructura para almacenar los datos
     const [datos,setDatos] = React.useState({
@@ -34,7 +47,7 @@ function Registro(){
 
     // // // evento para almacenar los datos
     const handleInputChange = (event) =>{
-        console.log(event.target.value)
+        // console.log(event.target.value)
         setDatos({
             ...datos,
             [event.target.name] : event.target.value
@@ -43,11 +56,30 @@ function Registro(){
 
 
     // evento del boton para enviar datos
-    const enviarDatos = (event) => {
+    const enviarDatos =  async (event) => {
         // console.log("enviando datos")
+        event.preventDefault();
         // event.preventDefault();
-        conexion(datos.username,datos.nombre,datos.apellido,datos.fecha_nacimiento,datos.fecha_registro,datos.correo,datos.foto_perfil,datos.password);    
+        var respuesta = await conexion(datos.username,datos.nombre,datos.apellido,datos.fecha_nacimiento,datos.fecha_registro,datos.correo,datos.foto_perfil,datos.password);    
+        
+        // alert("333")
+        // console.log(respuesta);
+        // alert("1")
+
+        // verificacon de la respuesta de go
+        if(respuesta.TIPO === 0 ){
+            mostrarAlerta("ERROR","No se ha podido registrar el usuario","error");
+        }
+        else if (respuesta.TIPO === 1){
+            mostrarAlerta("REGISTRO","Se ha registrado el usuario correctamente","success");  
+        } else {
+            mostrarAlerta("ERROR","No se ha podido registrar el usuario","error"); 
+            // alert("Error")
+        }
+        // alert("2")
     }
+
+   
 
 
     // return de la pagina del formulario de registro
@@ -172,26 +204,7 @@ function Registro(){
                                     </FormGroup>
 
 
-                                    {/* entrada para  */}
-                                    <FormGroup>
-                                        <label htmlFor="exampleInputPassword1">Foto Perfil</label>
-                                        <InputGroup>
-                                            <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>
-                                                    <i className="now-ui-icons emoticons_satisfied"></i>
-                                                </InputGroupText>
-                                            </InputGroupAddon>
-                                            <Input
-                                            placeholder="Foto de Perfil"
-                                            type="text"
-                                            name="foto_perfil"
-                                            // funcion para captura de datos 
-                                            onChange = {handleInputChange} 
-                                            ></Input>
-                                            </InputGroup>                                         
-                                    </FormGroup>
-
-
+                                    
                                     {/*  */}
                                     <FormGroup>
                                         <label htmlFor="exampleInputPassword1">Password</label>
@@ -212,6 +225,37 @@ function Registro(){
                                             </InputGroup>                                         
                                     </FormGroup>
 
+
+                                    {/* entrada para  perfil*/}
+                                    {/* <FormGroup>
+                                        <label htmlFor="exampleInputPassword1">Foto Perfil</label>
+                                        <InputGroup>
+                                            <InputGroupAddon addonType="prepend">
+                                                <InputGroupText>
+                                                    <i className="now-ui-icons emoticons_satisfied"></i>
+                                                </InputGroupText>
+                                            </InputGroupAddon>
+                                            <Input
+                                            placeholder="Foto de Perfil"
+                                            type="text"
+                                            name="foto_perfil"
+                                            // funcion para captura de datos 
+                                            onChange = {handleInputChange} 
+                                            ></Input>
+                                            </InputGroup>                                         
+                                    </FormGroup> */}
+                                    <br/>
+                                    <ImagePicker
+                                        extensions={['png']}
+                                        dims={{minWidth: 100, maxWidth: 500, minHeight: 100, maxHeight: 500}}
+                                        onChange={ base64 => console.log(base64) }
+                                        onError = {errMsg => mostrarAlerta("ERROR","No se ha podido cargar la imagen","error") }
+                                        >
+                                        <button>
+                                            Click para subir la imagen
+                                        </button>
+                                    </ImagePicker>
+
                                     
                                     <Button 
                                     color="primary" 
@@ -226,7 +270,9 @@ function Registro(){
                 </Col>
             </Container>
       </div>
+      
       </>
+          
     );
 }
 
