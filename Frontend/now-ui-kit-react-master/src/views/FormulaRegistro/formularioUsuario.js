@@ -47,7 +47,7 @@ function Registro(){
 
     // // // evento para almacenar los datos
     const handleInputChange = (event) =>{
-        // console.log(event.target.value)
+        console.log(event.target.value)
         setDatos({
             ...datos,
             [event.target.name] : event.target.value
@@ -55,12 +55,28 @@ function Registro(){
     }
 
 
+    function evitarEnvio(event){
+        event.preventDefault();
+    }
+
     // evento del boton para enviar datos
     const enviarDatos =  async (event) => {
         // console.log("enviando datos")
-        event.preventDefault();
         // event.preventDefault();
+        // event.preventDefault();
+
+        // validacion de campos vacios en el formulario
+        if(datos.username === '' || datos.nombre === '' 
+        || datos.apellido === '' || datos.fecha_nacimiento === ''
+        || datos.correo === '' || datos.password === '' || datos.foto_perfil === '' ){
+            mostrarAlerta("ERROR","Faltan datos...","error"); 
+            return;
+        }
+
         var respuesta = await conexion(datos.username,datos.nombre,datos.apellido,datos.fecha_nacimiento,datos.fecha_registro,datos.correo,datos.foto_perfil,datos.password);    
+        
+        alert("2")
+        
         
         // alert("333")
         // console.log(respuesta);
@@ -76,7 +92,7 @@ function Registro(){
             mostrarAlerta("ERROR","No se ha podido registrar el usuario","error"); 
             // alert("Error")
         }
-        // alert("2")
+        
     }
 
    
@@ -91,7 +107,7 @@ function Registro(){
                     <Card style={{  width: "40rem",backgroundColor: '#E8F1F2'}}>
                         <CardBody>
                             <CardTitle tag="h2">Formulario de Registro</CardTitle>
-                                <Form>
+                                <Form onSubmit={evitarEnvio}>
 
                                     {/* entrada para  username */}
                                     <FormGroup>
@@ -246,14 +262,15 @@ function Registro(){
                                     </FormGroup> */}
                                     <br/>
                                     <ImagePicker
+                                        name="foto_perfil"
                                         extensions={['png']}
                                         dims={{minWidth: 100, maxWidth: 500, minHeight: 100, maxHeight: 500}}
-                                        onChange={ base64 => console.log(base64) }
+                                        onChange={ base64 => datos.foto_perfil = base64}
                                         onError = {errMsg => mostrarAlerta("ERROR","No se ha podido cargar la imagen","error") }
                                         >
-                                        <button>
+                                        <Button color="info" size="lg">
                                             Click para subir la imagen
-                                        </button>
+                                        </Button>
                                     </ImagePicker>
 
                                     

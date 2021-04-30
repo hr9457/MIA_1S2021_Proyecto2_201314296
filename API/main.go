@@ -1,13 +1,17 @@
 package main
 
 import (
+	"bytes"
 	"database/sql"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"image/png"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"time"
+	"os"
+	"strings"
 
 	"github.com/gorilla/mux"
 	_ "github.com/mattn/go-oci8"
@@ -210,15 +214,48 @@ func insertar_usuario(usuario nuevo_usuario) error {
 // ***********************************************************************************************
 // ***********************************************************************************************
 
+func imagen(imagen_base64, username string) {
+	idx := strings.Index(imagen_base64, ";base64,")
+	if idx < 0 {
+		panic("Imagen Invalida")
+	}
+	ImageType := imagen_base64[11:idx]
+	log.Println(ImageType)
+
+	unbased, err := base64.StdEncoding.DecodeString(imagen_base64[idx+8:])
+	if err != nil {
+		panic("Error en la decoficacion b64")
+	}
+	r := bytes.NewReader(unbased)
+	switch ImageType {
+	case "png":
+		im, err := png.Decode(r)
+		if err != nil {
+			panic("No es png")
+		}
+		f, err := os.OpenFile("./image/"+username+".png", os.O_WRONLY|os.O_CREATE, 0777)
+		if err != nil {
+			panic("Cannot open file")
+		}
+		png.Encode(f, im)
+
+	}
+}
+
 // API - SET para insertar usuario nuevos en la base de datos
 func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
-	today := time.Now()
+	// today := time.Now()
 	var usuario nuevo_usuario
 	reqBody, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(reqBody, &usuario)
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
+	// concatenacion para imagen de perfil del usuario
+	var imagenUsuario = "./image/" + usuario.USERNAME + ".png"
+	// conversion de imagen
+	imagen(usuario.FOTO_PERFIL, usuario.USERNAME)
+	fmt.Println(imagenUsuario)
 	// fmt.Println(usuario.USERNAME)
 	// fmt.Println(usuario.NOMBRE)
 	// fmt.Println(usuario.APELLIDO)
@@ -229,28 +266,30 @@ func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
 	// // fmt.Println(usuario.ROL)
 	// fmt.Println(usuario.PASSWORD)
 	//
-	usuario.FECHA_REGISTRO = today.Format("2006-01-02 15:04:05")
-	// insertar_usuario(usuario.USERNAME, usuario.NOMBRE, usuario.APELLIDO, usuario.FECHA_NACIMIENTO, usuario.FECHA_REGISTRO, usuario.CORREO, usuario.FOTO_PERFIL, usuario.PASSWORD, usuario.ROL)
-	error := insertar_usuario(usuario)
-	if error != nil {
-		// mensaje de confirmacion para el Frontend
-		var confirmacion_error confirmacion
-		confirmacion_error.MENSAJE = "Error al registrar un usuario"
-		confirmacion_error.TIPO = 0
-		// conversion a JSON para enviar
-		json.NewEncoder(w).Encode(confirmacion_error)
-		//
-		fmt.Println("Error al registrar un usuario \n", error)
-	} else {
-		// mensaje de confirmacion para el Frontend
-		var confirmacion_exitosa confirmacion
-		confirmacion_exitosa.MENSAJE = "Usuario Registrado"
-		confirmacion_exitosa.TIPO = 1
-		// conversion a JSON para enviar
-		json.NewEncoder(w).Encode(confirmacion_exitosa)
-		//
-		fmt.Println("Usuario registrado")
-	}
+
+	//
+	// usuario.FECHA_REGISTRO = today.Format("2006-01-02 15:04:05")
+	// // insertar_usuario(usuario.USERNAME, usuario.NOMBRE, usuario.APELLIDO, usuario.FECHA_NACIMIENTO, usuario.FECHA_REGISTRO, usuario.CORREO, usuario.FOTO_PERFIL, usuario.PASSWORD, usuario.ROL)
+	// error := insertar_usuario(usuario)
+	// if error != nil {
+	// 	// mensaje de confirmacion para el Frontend
+	// 	var confirmacion_error confirmacion
+	// 	confirmacion_error.MENSAJE = "Error al registrar un usuario"
+	// 	confirmacion_error.TIPO = 0
+	// 	// conversion a JSON para enviar
+	// 	json.NewEncoder(w).Encode(confirmacion_error)
+	// 	//
+	// 	fmt.Println("Error al registrar un usuario \n", error)
+	// } else {
+	// 	// mensaje de confirmacion para el Frontend
+	// 	var confirmacion_exitosa confirmacion
+	// 	confirmacion_exitosa.MENSAJE = "Usuario Registrado"
+	// 	confirmacion_exitosa.TIPO = 1
+	// 	// conversion a JSON para enviar
+	// 	json.NewEncoder(w).Encode(confirmacion_exitosa)
+	// 	//
+	// 	fmt.Println("Usuario registrado")
+	// }
 }
 
 // pureba de get para obtener los estados registrado para los eventos

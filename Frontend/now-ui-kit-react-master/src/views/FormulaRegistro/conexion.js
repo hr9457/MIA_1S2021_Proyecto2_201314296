@@ -20,6 +20,8 @@ async function conexion(username,nombre,apellido,fecha_nacimiento,
     fecha_nacimiento:''+fecha_nacimiento+' 00:00:00',fecha_registro:''+fecha_registro,
     correo:''+correo,foto_perfil:''+foto_perfil,password:''+sha256(password)}
 
+    console.log(data);
+
     let respuesta; 
 
     await fetch(url,{
