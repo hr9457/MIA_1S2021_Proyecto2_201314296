@@ -12,11 +12,82 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/gorilla/mux"
 	_ "github.com/mattn/go-oci8"
 )
 
+// ***********************************************************************************************
+// ***********************************************************************************************
+// ***********************************************************************************************
+// ***********************************************************************************************
+// ***********************************************************************************************
+// funciones extras
+
+// funcion para comvertir una imagen a base 64
+func imagen(imagen_base64, username string) {
+	idx := strings.Index(imagen_base64, ";base64,")
+	if idx < 0 {
+		panic("Imagen Invalida")
+	}
+	ImageType := imagen_base64[11:idx]
+	log.Println(ImageType)
+
+	unbased, err := base64.StdEncoding.DecodeString(imagen_base64[idx+8:])
+	if err != nil {
+		panic("Error en la decoficacion b64")
+	}
+	r := bytes.NewReader(unbased)
+	switch ImageType {
+	case "png":
+		im, err := png.Decode(r)
+		if err != nil {
+			panic("No es png")
+		}
+		f, err := os.OpenFile("./image/"+username+".png", os.O_WRONLY|os.O_CREATE, 0777)
+		if err != nil {
+			panic("Cannot open file")
+		}
+		png.Encode(f, im)
+
+	}
+}
+
+// funcion para convertir a base64 una imagen del backed
+func toBase64(b []byte) string {
+	return base64.StdEncoding.EncodeToString(b)
+}
+
+// funcion para retornar la imagen del usuario en base64
+func get_image(nombre_imagen string) string {
+	// contenedor
+	var imagen = "./image/" + nombre_imagen + ".png"
+	//
+	//
+	bytes, err := ioutil.ReadFile(imagen)
+	if err != nil {
+		log.Fatal(err)
+	}
+	//
+	var base64Encoding string
+	//
+	mimeType := http.DetectContentType(bytes)
+
+	switch mimeType {
+	case "image/png":
+		base64Encoding += "data:image/png;base64,"
+	}
+	base64Encoding += toBase64(bytes)
+	// fmt.Println(base64Encoding)
+	return base64Encoding
+}
+
+// ***********************************************************************************************
+// ***********************************************************************************************
+// ***********************************************************************************************
+// ***********************************************************************************************
+// ***********************************************************************************************
 //***** estructuras
 type rol struct {
 	tipo string
@@ -36,8 +107,9 @@ type usuario struct {
 }
 
 type usuario_logeado struct {
-	USERNAME string
-	PASSWORD string
+	USERNAME    string
+	PASSWORD    string
+	FOTO_PERFIL string
 }
 
 type Response struct {
@@ -46,10 +118,11 @@ type Response struct {
 
 // struct para devolver los paraemtros de la consulta de login
 type session struct {
-	ID       int
-	USERNAME string
-	NOMBRE   string
-	TIPO     int
+	ID          int
+	USERNAME    string
+	NOMBRE      string
+	FOTO_PERFIL string
+	TIPO        int
 }
 
 // struct para insertar un usuario en la base de datos
@@ -178,7 +251,10 @@ func consultar_usuario(user_name, password_usuario string) ([]session, error) {
 
 	for rows.Next() {
 
+		// insert de los resultados de la consulta
 		err = rows.Scan(&resultado_session.ID, &resultado_session.USERNAME, &resultado_session.NOMBRE, &resultado_session.TIPO)
+		// prueba para el retorno de la imgaen de usuario ingreso
+		resultado_session.FOTO_PERFIL = get_image(user_name)
 
 		if err != nil {
 			return nil, err
@@ -214,37 +290,9 @@ func insertar_usuario(usuario nuevo_usuario) error {
 // ***********************************************************************************************
 // ***********************************************************************************************
 
-func imagen(imagen_base64, username string) {
-	idx := strings.Index(imagen_base64, ";base64,")
-	if idx < 0 {
-		panic("Imagen Invalida")
-	}
-	ImageType := imagen_base64[11:idx]
-	log.Println(ImageType)
-
-	unbased, err := base64.StdEncoding.DecodeString(imagen_base64[idx+8:])
-	if err != nil {
-		panic("Error en la decoficacion b64")
-	}
-	r := bytes.NewReader(unbased)
-	switch ImageType {
-	case "png":
-		im, err := png.Decode(r)
-		if err != nil {
-			panic("No es png")
-		}
-		f, err := os.OpenFile("./image/"+username+".png", os.O_WRONLY|os.O_CREATE, 0777)
-		if err != nil {
-			panic("Cannot open file")
-		}
-		png.Encode(f, im)
-
-	}
-}
-
 // API - SET para insertar usuario nuevos en la base de datos
 func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
-	// today := time.Now()
+	today := time.Now()
 	var usuario nuevo_usuario
 	reqBody, _ := ioutil.ReadAll(r.Body)
 	json.Unmarshal(reqBody, &usuario)
@@ -255,7 +303,7 @@ func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
 	var imagenUsuario = "./image/" + usuario.USERNAME + ".png"
 	// conversion de imagen
 	imagen(usuario.FOTO_PERFIL, usuario.USERNAME)
-	fmt.Println(imagenUsuario)
+	// fmt.Println(imagenUsuario)
 	// fmt.Println(usuario.USERNAME)
 	// fmt.Println(usuario.NOMBRE)
 	// fmt.Println(usuario.APELLIDO)
@@ -268,28 +316,31 @@ func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
 	//
 
 	//
-	// usuario.FECHA_REGISTRO = today.Format("2006-01-02 15:04:05")
-	// // insertar_usuario(usuario.USERNAME, usuario.NOMBRE, usuario.APELLIDO, usuario.FECHA_NACIMIENTO, usuario.FECHA_REGISTRO, usuario.CORREO, usuario.FOTO_PERFIL, usuario.PASSWORD, usuario.ROL)
-	// error := insertar_usuario(usuario)
-	// if error != nil {
-	// 	// mensaje de confirmacion para el Frontend
-	// 	var confirmacion_error confirmacion
-	// 	confirmacion_error.MENSAJE = "Error al registrar un usuario"
-	// 	confirmacion_error.TIPO = 0
-	// 	// conversion a JSON para enviar
-	// 	json.NewEncoder(w).Encode(confirmacion_error)
-	// 	//
-	// 	fmt.Println("Error al registrar un usuario \n", error)
-	// } else {
-	// 	// mensaje de confirmacion para el Frontend
-	// 	var confirmacion_exitosa confirmacion
-	// 	confirmacion_exitosa.MENSAJE = "Usuario Registrado"
-	// 	confirmacion_exitosa.TIPO = 1
-	// 	// conversion a JSON para enviar
-	// 	json.NewEncoder(w).Encode(confirmacion_exitosa)
-	// 	//
-	// 	fmt.Println("Usuario registrado")
-	// }
+	usuario.FECHA_REGISTRO = today.Format("2006-01-02 15:04:05")
+	// guarda la ruta de la imagen del usuario
+	usuario.FOTO_PERFIL = imagenUsuario
+	//
+	// insertar_usuario(usuario.USERNAME, usuario.NOMBRE, usuario.APELLIDO, usuario.FECHA_NACIMIENTO, usuario.FECHA_REGISTRO, usuario.CORREO, usuario.FOTO_PERFIL, usuario.PASSWORD, usuario.ROL)
+	error := insertar_usuario(usuario)
+	if error != nil {
+		// mensaje de confirmacion para el Frontend
+		var confirmacion_error confirmacion
+		confirmacion_error.MENSAJE = "Error al registrar un usuario"
+		confirmacion_error.TIPO = 0
+		// conversion a JSON para enviar
+		json.NewEncoder(w).Encode(confirmacion_error)
+		//
+		fmt.Println("Error al registrar un usuario \n", error)
+	} else {
+		// mensaje de confirmacion para el Frontend
+		var confirmacion_exitosa confirmacion
+		confirmacion_exitosa.MENSAJE = "Usuario Registrado"
+		confirmacion_exitosa.TIPO = 1
+		// conversion a JSON para enviar
+		json.NewEncoder(w).Encode(confirmacion_exitosa)
+		//
+		fmt.Println("Usuario registrado")
+	}
 }
 
 // pureba de get para obtener los estados registrado para los eventos
@@ -352,10 +403,43 @@ func prueba_post(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal(reqBody, &datos)
 	println(datos.USERNAME)
 	println(datos.PASSWORD)
+	println(datos.FOTO_PERFIL)
+	//
+	// contenedor
+	var imagen = "./image/" + datos.USERNAME + ".png"
+	//
+	bytes, err := ioutil.ReadFile(imagen)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var base64Encoding string
+
+	mimeType := http.DetectContentType(bytes)
+	switch mimeType {
+	case "image/png":
+		base64Encoding += "data:image/png;base64,"
+	}
+	base64Encoding += toBase64(bytes)
+	fmt.Println(base64Encoding)
+	//
+	var datos2 usuario_logeado
+	datos2.USERNAME = datos.USERNAME
+	datos2.PASSWORD = datos.PASSWORD
+	datos2.FOTO_PERFIL = base64Encoding
+	//
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(datos2)
 }
+
+// ****************************************************************************
+// ****************************************************************************
+// ****************************************************************************
+// ****************************************************************************
+// ****************************************************************************
+// ****************************************************************************
+// **** funcion main
 
 // funcion prinsipal
 func main() {

@@ -22,6 +22,7 @@ import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 // exportacion de funcion para comprobar la session
 import IniciarSession from "views/examples/session.js"
+import swal from 'sweetalert';
 
 
 
@@ -33,6 +34,16 @@ function redirigir_formulario(){
 
 function LoginPage() {  
 
+  // funcion para mostrar alertas
+  const mostrarAlerta=(titulo,mensaje,icono)=>{
+    swal({
+        title:""+titulo,
+        text:""+mensaje,
+        icon:""+icono,
+        button:"Aceptar"
+    })
+}
+
   // estrutra de los datos
   const [datos,setDatos] = useState({
     usuario: '',
@@ -40,6 +51,12 @@ function LoginPage() {
   })
 
   const enviarDatos = (event) => {
+    
+    // verificacion de casillas 
+    if(datos.usuario === '' || datos.password === ''){
+      mostrarAlerta("ERROR","Faltan datos...","error"); 
+            return;
+    }
     // event.preventDefault();
     IniciarSession(datos.usuario,datos.password);    
   }

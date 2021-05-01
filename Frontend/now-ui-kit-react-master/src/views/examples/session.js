@@ -1,10 +1,22 @@
 import Cookies from 'universal-cookie'
+import swal from 'sweetalert';
 
 // importacion de la libreria sha256
 var sha256 = require('js-sha256');
 
 // cookies
 const cookies = new Cookies();
+
+
+// plantillas para alertas
+const mostrarAlerta=(titulo,mensaje,icono)=>{
+    swal({
+        title:""+titulo,
+        text:""+mensaje,
+        icon:""+icono,
+        button:"Aceptar"
+    })
+}
 
 
 // funcion para verificion del inicio de session 

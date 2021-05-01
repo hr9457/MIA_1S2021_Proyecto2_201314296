@@ -14,6 +14,7 @@ import Row from 'reactstrap/lib/Row';
 import swal from 'sweetalert';
 import {FilePicker} from 'react-file-picker';
 import {ImagePicker} from 'react-file-picker'
+import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 
 import conexion from 'views/FormulaRegistro/conexion.js'
@@ -286,6 +287,10 @@ function Registro(){
                     </Card>
                 </Col>
             </Container>
+      </div>
+
+      <div>
+        <DefaultFooter />
       </div>
       
       </>
