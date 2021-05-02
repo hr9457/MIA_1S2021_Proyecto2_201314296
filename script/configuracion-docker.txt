@@ -6,6 +6,12 @@ docker exec -it 29636e21dca9  bash
 ./post_install.sh
 docker stop 29636e21dca9 
 
+***** clone de docker 
+
+docker start dad034555e07
+docker exec -it dad034555e07 bash 
+./post_install.sh 
+
 
 insert into rol(nombre_rol) values ('administrador');
 insert into rol(nombre_rol) values ('usuario');

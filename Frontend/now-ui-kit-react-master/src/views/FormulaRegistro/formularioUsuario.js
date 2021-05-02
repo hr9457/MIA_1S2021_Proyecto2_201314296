@@ -76,7 +76,7 @@ function Registro(){
 
         var respuesta = await conexion(datos.username,datos.nombre,datos.apellido,datos.fecha_nacimiento,datos.fecha_registro,datos.correo,datos.foto_perfil,datos.password);    
         
-        alert("2")
+        // alert("2")
         
         
         // alert("333")

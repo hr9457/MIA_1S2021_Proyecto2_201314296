@@ -32,6 +32,8 @@ import LoginPage from "views/examples/LoginPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Menu from "views/MenuUsuario/menuUsuario.js"
 import Formulario from "views/FormulaRegistro/formularioUsuario.js"
+import PerfilAdmi from "views/perfil-usuario/perfil-admi.js"
+import PerfilUsser from 'views/perfil-usuario/perfil-usuario.js'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -40,6 +42,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/registro-usuario" component={Formulario}/>
         <Route exact path="/perfil" component={ProfilePage}/>
+        <Route exact path="/perfil-usuario" component={PerfilUsser} />
+        <Route exact path="/perfil-admi" component={PerfilAdmi}/>
         <Route exact path="/menu"  component={Menu}/>
         <Route path="/login-page" render={(props) => <LoginPage {...props} />} />
         <Redirect to="/login-page" />

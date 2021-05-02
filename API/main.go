@@ -118,11 +118,11 @@ type Response struct {
 
 // struct para devolver los paraemtros de la consulta de login
 type session struct {
-	ID          int
-	USERNAME    string
-	NOMBRE      string
-	FOTO_PERFIL string
-	TIPO        int
+	ID       int
+	USERNAME string
+	NOMBRE   string
+	TIPO     int
+	// FOTO_PERFIL string
 }
 
 // struct para insertar un usuario en la base de datos
@@ -142,6 +142,14 @@ type nuevo_usuario struct {
 type confirmacion struct {
 	MENSAJE string
 	TIPO    int
+}
+
+// struc para obtener la ruta de la imagen del perfil de un usuario
+type username_usuario struct {
+	USERNAME string
+}
+type imagen_usuario struct {
+	FOTO_PERFIL string
 }
 
 // ****************************************************************************
@@ -229,6 +237,40 @@ func consultar_usuarios() ([]usuario, error) {
 
 }
 
+// consulta para saber la imagen de un usuario
+func consultar_imagen_perfil(userName string) ([]imagen_usuario, error) {
+	image := []imagen_usuario{}
+	db, err := obtenerConeccion()
+
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+
+	consulta, err := db.Query("select usuario.foto_perfil where usuario.usarname = '" + userName + "'")
+
+	if err != nil {
+		log.Fatal("Error \n", err)
+	}
+	defer consulta.Close()
+
+	var resultado_consulta imagen_usuario
+
+	for consulta.Next() {
+		// guardar resultados de cosulta
+		err = consulta.Scan(&resultado_consulta.FOTO_PERFIL)
+		//
+		if err != nil {
+			return nil, err
+		}
+		//
+		image = append(image, resultado_consulta)
+	}
+	return image, nil
+}
+
+//
+
 // consulta para un usuario en concreto = login
 func consultar_usuario(user_name, password_usuario string) ([]session, error) {
 
@@ -254,7 +296,7 @@ func consultar_usuario(user_name, password_usuario string) ([]session, error) {
 		// insert de los resultados de la consulta
 		err = rows.Scan(&resultado_session.ID, &resultado_session.USERNAME, &resultado_session.NOMBRE, &resultado_session.TIPO)
 		// prueba para el retorno de la imgaen de usuario ingreso
-		resultado_session.FOTO_PERFIL = get_image(user_name)
+		// resultado_session.FOTO_PERFIL = get_image(user_name)
 
 		if err != nil {
 			return nil, err
@@ -344,14 +386,14 @@ func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
 }
 
 // pureba de get para obtener los estados registrado para los eventos
-func get_estadosEventos(w http.ResponseWriter, r *http.Request) {
-	estados, err := consultar_estadoEvento()
-	if err != nil {
-		fmt.Printf("Error al obtener los estados")
-	} else {
-		json.NewEncoder(w).Encode(estados)
-	}
-}
+// func get_estadosEventos(w http.ResponseWriter, r *http.Request) {
+// 	estados, err := consultar_estadoEvento()
+// 	if err != nil {
+// 		fmt.Printf("Error al obtener los estados")
+// 	} else {
+// 		json.NewEncoder(w).Encode(estados)
+// 	}
+// }
 
 // get para obtener los usuario registrados
 func get_usuarios(w http.ResponseWriter, r *http.Request) {
@@ -380,19 +422,40 @@ func get_login(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("Error en la consulta del inicio de sesion")
 	} else {
 		//
-		var usuario_no_econtrado session
-		usuario_no_econtrado.ID = 0
-		usuario_no_econtrado.NOMBRE = "No Econtrado"
-		usuario_no_econtrado.USERNAME = "No Econtrado"
-		usuario_no_econtrado.TIPO = 0
+		var usuario_no_econtrado [1]session
+		usuario_no_econtrado[0].ID = 0
+		usuario_no_econtrado[0].NOMBRE = "No Econtrado"
+		usuario_no_econtrado[0].USERNAME = "No Econtrado"
+		usuario_no_econtrado[0].TIPO = 0
 		//
 		if len(usuario) == 0 {
 			json.NewEncoder(w).Encode(usuario_no_econtrado)
 		} else {
-			fmt.Println(usuario)
+			// fmt.Println(usuario)
 			json.NewEncoder(w).Encode(usuario)
 		}
 	}
+}
+
+// funcion para consultar la imagen de perfil de un usuario
+func get_image_profile(w http.ResponseWriter, r *http.Request) {
+	var username username_usuario
+	reqBody, _ := ioutil.ReadAll(r.Body)
+	json.Unmarshal(reqBody, &username)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
+	// resultado de la consulta
+	// imagen, err := consultar_imagen_perfil(username.USERNAME)
+	// if err != nil {
+	// 	fmt.Println("Error en la consulta de la imagen de perfil")
+	// } else {
+	// retorno del imgaen gen base64
+	var imagen64 imagen_usuario
+	imagen64.FOTO_PERFIL = get_image(username.USERNAME)
+	//
+	json.NewEncoder(w).Encode(imagen64)
+
 }
 
 // api para realizar una prueba post
@@ -448,7 +511,7 @@ func main() {
 	// inicializacion de lor router
 	router := mux.NewRouter().StrictSlash(true)
 
-	router.HandleFunc("/estado", get_estadosEventos)
+	// router.HandleFunc("/estado", get_estadosEventos)
 
 	router.HandleFunc("/usuarios", get_usuarios)
 
@@ -456,6 +519,9 @@ func main() {
 
 	// router para hacer la consuta del login
 	router.HandleFunc("/login", get_login).Methods("POST")
+
+	// router para obtener la imagen del usuario logeado
+	router.HandleFunc("/image_perfil", get_image_profile).Methods("POST")
 
 	// router para registar un usuario nuevo
 	router.HandleFunc("/registro_usuario", set_usuarioNuevo).Methods("POST")

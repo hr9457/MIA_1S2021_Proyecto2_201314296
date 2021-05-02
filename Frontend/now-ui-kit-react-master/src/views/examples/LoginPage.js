@@ -23,6 +23,9 @@ import TransparentFooter from "components/Footers/TransparentFooter.js";
 // exportacion de funcion para comprobar la session
 import IniciarSession from "views/examples/session.js"
 import swal from 'sweetalert';
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies();
 
 
 
@@ -50,15 +53,41 @@ function LoginPage() {
     password: ''
   })
 
-  const enviarDatos = (event) => {
+  const enviarDatos = async (event) => {
     
     // verificacion de casillas 
     if(datos.usuario === '' || datos.password === ''){
       mostrarAlerta("ERROR","Faltan datos...","error"); 
             return;
     }
+
+    // respuesta del la consulta fetch
     // event.preventDefault();
-    IniciarSession(datos.usuario,datos.password);    
+    let respuesta = await IniciarSession(datos.usuario,datos.password);    
+
+    // REDIRECCION
+    if(respuesta[0].TIPO === 0)
+    {
+      mostrarAlerta("ERROR","Usuario no Encontrado","error"); 
+      return;
+    }
+
+    if (respuesta[0].TIPO === 1)
+    {
+      cookies.set('id_usuario',respuesta[0].ID,{path:"/"});
+      cookies.set('username',respuesta[0].USERNAME,{path:"/"});
+      cookies.set('nombre_usuario',respuesta[0].NOMBRE,{path:"/"});
+      cookies.set('tipo_usuario',respuesta[0].TIPO,{path:"/"}); 
+      window.location.href="./perfil-admi";          
+    }
+    else if(respuesta[0].TIPO === 2)
+    {
+      cookies.set('id_usuario',respuesta[0].ID,{path:"/"});
+      cookies.set('username',respuesta[0].USERNAME,{path:"/"});
+      cookies.set('nombre_usuario',respuesta[0].NOMBRE,{path:"/"});
+      cookies.set('tipo_usuario',respuesta[0].TIPO,{path:"/"}); 
+      window.location.href="./perfil-usuario";
+    }
   }
 
   // evento para almacenar los datos
