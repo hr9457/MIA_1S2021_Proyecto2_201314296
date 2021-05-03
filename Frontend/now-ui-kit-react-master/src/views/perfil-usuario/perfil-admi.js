@@ -1,12 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import Button from 'reactstrap/lib/Button';
 import Col from 'reactstrap/lib/Col';
 import Container from 'reactstrap/lib/Container';
-import Nav from 'reactstrap/lib/Nav';
 import Navbar from 'reactstrap/lib/Navbar';
 import NavbarBrand from 'reactstrap/lib/NavbarBrand';
-import NavItem from 'reactstrap/lib/NavItem';
 import Row from 'reactstrap/lib/Row';
 import UncontrolledCollapse from 'reactstrap/lib/UncontrolledCollapse';
 
@@ -31,14 +28,19 @@ function ProfileAdmi(){
     return(
         // contenedor principal
         <div>
-
-            {/* navbar principal */}
-            <div>
-                <nav class="navbar navbar-dark bg-dark">
-                    <a href="#"><h2>Perfil</h2> </a>
-                    <a href="#" onClick={cerrrarSession}><h2>Salir</h2> </a>                            
-                </nav>              
-            </div>    
+            {/* barra de navegacion para el administrador */}
+            <Navbar className="bg-primary" expand="lg">
+                <Container>
+                <div className="navbar-translate">
+                    <NavbarBrand target="_blank" id="navbar-brand">
+                        ADMINISTRACION 
+                    </NavbarBrand>
+                    <button className="navbar-toggler navbar-toggler"></button>
+                    <Button color="primary" size="sm">Estadisticas</Button>
+                    <Button color="primary" size="sm" onClick={cerrrarSession}>Salir</Button>
+                </div>
+                </Container>
+            </Navbar>
 
             {/* infromacion principal */}
             <div>

@@ -6,6 +6,9 @@ import Row from 'reactstrap/lib/Row';
 import obtenerFoto from 'views/perfil-usuario/ObtenerImagen.js'
 
 import Cookies from 'universal-cookie';
+import Navbar from 'reactstrap/lib/Navbar';
+import Container from 'reactstrap/lib/Container';
+import NavbarBrand from 'reactstrap/lib/NavbarBrand';
 
 const cookies = new Cookies();
 
@@ -53,12 +56,24 @@ function ProfileUsser(){
         <div>
 
             {/* navbar principal */}
-            <div>
-                <nav class="navbar navbar-dark bg-primary">
-                    <a href="#"><h2>Perfil</h2> </a>
-                    <a href="#" onClick={cerrrarSession}><h2>Salir</h2> </a>                            
-                </nav>              
-            </div>    
+            <Navbar className="bg-info" expand="lg">
+                <Container>
+                <div className="navbar-translate">
+                    <NavbarBrand target="_blank" id="navbar-brand">
+                        <h4>QUINIELA APP</h4>
+                    </NavbarBrand>
+                    
+                    <Button color="info" size="lg">
+                        <i class="now-ui-icons users_circle-08"></i>
+                        Perfil
+                    </Button>
+                    <Button color="info" size="lg" onClick={cerrrarSession}>
+                        <i className="now-ui-icons objects_key-25"></i>
+                        salir
+                    </Button>
+                </div>
+                </Container>
+            </Navbar>  
 
             {/* infromacion principal */}
             <div>

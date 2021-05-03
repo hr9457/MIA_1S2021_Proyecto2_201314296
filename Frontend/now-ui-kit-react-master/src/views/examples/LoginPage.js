@@ -18,8 +18,8 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
+// import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+// import TransparentFooter from "components/Footers/TransparentFooter.js";
 // exportacion de funcion para comprobar la session
 import IniciarSession from "views/examples/session.js"
 import swal from 'sweetalert';
