@@ -21,6 +21,11 @@ function cerrrarSession(){
     window.location.href="./login-page";
 }
 
+// redireccon para ediccion de informacion de usuario
+function editProfile(){
+    window.location.href="./editar_profiel";
+}
+
 
 
 // pagina de usuario perfil de administrador
@@ -53,7 +58,7 @@ function ProfileUsser(){
     // retorno de la pagina
     return(
         // contenedor principal
-        <div>
+        <div  style={{backgroundColor:'#ECF0F1'}}>
 
             {/* navbar principal */}
             <Navbar className="bg-info" expand="lg">
@@ -63,7 +68,7 @@ function ProfileUsser(){
                         <h4>QUINIELA APP</h4>
                     </NavbarBrand>
                     
-                    <Button color="info" size="lg">
+                    <Button color="info" size="lg" onClick={editProfile}>
                         <i class="now-ui-icons users_circle-08"></i>
                         Perfil
                     </Button>

@@ -118,10 +118,14 @@ type Response struct {
 
 // struct para devolver los paraemtros de la consulta de login
 type session struct {
-	ID       int
-	USERNAME string
-	NOMBRE   string
-	TIPO     int
+	ID               int
+	USERNAME         string
+	NOMBRE           string
+	APELLIDO         string
+	FECHA_NACIMIENTO string
+	CORREO           string
+	TIPO             int
+	PASSWORD         string
 	// FOTO_PERFIL string
 }
 
@@ -282,7 +286,7 @@ func consultar_usuario(user_name, password_usuario string) ([]session, error) {
 	}
 	defer db.Close()
 
-	rows, err := db.Query("select usuario.id_usuario,usuario.usarname,usuario.nombre_usuario,usuario.fk_id_rol from usuario where usuario.usarname = '" + user_name + "' and usuario.password = '" + password_usuario + "' ")
+	rows, err := db.Query("select usuario.id_usuario,usuario.usarname,usuario.nombre_usuario,usuario.apellido_usuario,usuario.fecha_nacimiento,usuario.correo_electronico,usuario.fk_id_rol,usuario.password from usuario where usuario.usarname = '" + user_name + "' and usuario.password = '" + password_usuario + "' ")
 
 	if err != nil {
 		log.Fatal("Error \n", err)
@@ -294,7 +298,7 @@ func consultar_usuario(user_name, password_usuario string) ([]session, error) {
 	for rows.Next() {
 
 		// insert de los resultados de la consulta
-		err = rows.Scan(&resultado_session.ID, &resultado_session.USERNAME, &resultado_session.NOMBRE, &resultado_session.TIPO)
+		err = rows.Scan(&resultado_session.ID, &resultado_session.USERNAME, &resultado_session.NOMBRE, &resultado_session.APELLIDO, &resultado_session.FECHA_NACIMIENTO, &resultado_session.CORREO, &resultado_session.TIPO, &resultado_session.PASSWORD)
 		// prueba para el retorno de la imgaen de usuario ingreso
 		// resultado_session.FOTO_PERFIL = get_image(user_name)
 
