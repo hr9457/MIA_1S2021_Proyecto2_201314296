@@ -16,9 +16,16 @@ async function conexion(username,nombre,apellido,fecha_nacimiento,
 
     var url = 'http://localhost:4000/registro_usuario'
 
-    var data = {username:''+username,nombre:''+nombre,apellido:''+apellido,
-    fecha_nacimiento:''+fecha_nacimiento+' 00:00:00',fecha_registro:''+fecha_registro,
-    correo:''+correo,foto_perfil:''+foto_perfil,password:''+sha256(password)}
+    var data = {
+        username:''+username,
+        nombre:''+nombre,
+        apellido:''+apellido,
+        fecha_nacimiento:''+fecha_nacimiento+' 00:00:00',
+        fecha_registro:''+fecha_registro,
+        correo:''+correo,
+        foto_perfil:''+foto_perfil,
+        password:''+sha256(password)
+    }
 
     console.log(data);
 

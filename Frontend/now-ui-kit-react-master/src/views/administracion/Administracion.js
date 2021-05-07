@@ -28,13 +28,15 @@ function Administracion(){
         reader.readAsText(file);
         
         reader.onload = function() {
+            // console.log(reader.result);
             resultYaml = yaml.load(reader.result);
-            console.log(resultYaml)
-            var obejtoJS = JSON.parse(JSON.stringify(resultYaml));
-            console.log(obejtoJS.A2.nombre);
-            console.log(obejtoJS.A2.apellido);
-            console.log(obejtoJS.A2.password);
-            console.log(obejtoJS.A2.username);
+            // console.log(resultYaml);
+            var obejtoJS = Object.values(resultYaml);
+            console.log(obejtoJS);
+            // console.log(obejtoJS.A2.nombre);
+            // console.log(obejtoJS.A2.apellido);
+            // console.log(obejtoJS.A2.password);
+            // console.log(obejtoJS.A2.username);
             // console.log(JSON.parse(resultYaml).nombre);
         };
         

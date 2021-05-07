@@ -82,14 +82,17 @@ function LoginPage() {
     }
     else if(respuesta[0].TIPO === 2)
     {
+      let fecha = respuesta[0].FECHA_NACIMIENTO;
+      let subFecha = fecha.substring(0,10);
       cookies.set('id_usuario',respuesta[0].ID,{path:"/"});
       cookies.set('username',respuesta[0].USERNAME,{path:"/"});
       cookies.set('nombre_usuario',respuesta[0].NOMBRE,{path:"/"});
       cookies.set('apellido_usuario',respuesta[0].APELLIDO,{path:"/"});
-      cookies.set('fecha_nacimiento',respuesta[0].FECHA_NACIMIENTO,{path:"/"});
+      cookies.set('fecha_nacimiento',subFecha,{path:"/"});
       cookies.set('correo_electronico',respuesta[0].CORREO,{path:"/"});      
       cookies.set('tipo_usuario',respuesta[0].TIPO,{path:"/"}); 
       cookies.set('password',respuesta[0].PASSWORD,{path:"/"});
+      // alert(subFecha);
       window.location.href="./perfil-usuario";
     }
   }

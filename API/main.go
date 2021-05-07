@@ -156,6 +156,17 @@ type imagen_usuario struct {
 	FOTO_PERFIL string
 }
 
+// struct para devolver los paraemtros de la consulta de login
+type dato_actualizado struct {
+	USERNAME         string
+	NOMBRE           string
+	APELLIDO         string
+	FECHA_NACIMIENTO string
+	CORREO           string
+	PASSWORD         string
+	// FOTO_PERFIL string
+}
+
 // ****************************************************************************
 // ****************************************************************************
 // ****************************************************************************
@@ -330,11 +341,61 @@ func insertar_usuario(usuario nuevo_usuario) error {
 	return error
 }
 
+// consulta para actualizar datos de un usuario
+func actualizar(usuario dato_actualizado) error {
+	// obtener coneccion
+	db, error := obtenerConeccion()
+	if error != nil {
+		fmt.Println("Error al obtner la conexion con DB")
+		return error
+	}
+	defer db.Close()
+
+	// consulta := "update usuario set nombre_usuario='" + usuario.NOMBRE + "', apellido_usuario='" + usuario.APELLIDO + "', fecha_nacimiento = TO_DATE('" + usuario.FECHA_NACIMIENTO + "','YYYY-MM-DD'), correo_electronico='" + usuario.CORREO + "', password='" + usuario.PASSWORD + "' where usarname='" + usuario.USERNAME + "' "
+
+	// fmt.Println(consulta)
+
+	_, error = db.Exec("update usuario set  nombre_usuario='" + usuario.NOMBRE + "', apellido_usuario='" + usuario.APELLIDO + "', fecha_nacimiento = TO_DATE('" + usuario.FECHA_NACIMIENTO + "','YYYY-MM-DD'), correo_electronico='" + usuario.CORREO + "', password='" + usuario.PASSWORD + "' where usarname='" + usuario.USERNAME + "' ")
+
+	return error
+}
+
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
+
+// API - SET para actualizar datos de los usuario en la base datos
+func actualizar_usuario(w http.ResponseWriter, r *http.Request) {
+	var usuario dato_actualizado
+	reqBody, _ := ioutil.ReadAll(r.Body)
+	json.Unmarshal(reqBody, &usuario)
+	json.Unmarshal(reqBody, &usuario)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
+	//
+	error := actualizar(usuario)
+	fmt.Println(error)
+	if error != nil {
+		// mensaje de retorno  erroneo
+		var mensajeError confirmacion
+		mensajeError.MENSAJE = "Error no se ha podido actualizar los datos"
+		mensajeError.TIPO = 0
+		// conversion a json  para enviar
+		json.NewEncoder(w).Encode(mensajeError)
+		fmt.Println("No se han actualizados los datos")
+	} else {
+		// mesaje de exito en la actualizacion
+		var mensajeCofirmacion confirmacion
+		mensajeCofirmacion.MENSAJE = "Datos Actualizados"
+		mensajeCofirmacion.TIPO = 1
+		// conversion a json para enviar
+		json.NewEncoder(w).Encode(mensajeCofirmacion)
+		fmt.Println("Datos Actualizados")
+	}
+}
 
 // API - SET para insertar usuario nuevos en la base de datos
 func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
@@ -500,6 +561,13 @@ func prueba_post(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(datos2)
 }
 
+func cargaDatos(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.Body)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
+}
+
 // ****************************************************************************
 // ****************************************************************************
 // ****************************************************************************
@@ -530,6 +598,13 @@ func main() {
 	// router para registar un usuario nuevo
 	router.HandleFunc("/registro_usuario", set_usuarioNuevo).Methods("POST")
 
+	// router para actualizar datos de un usuario
+	router.HandleFunc("/actualizar_datos", actualizar_usuario).Methods("POST")
+
+	// carga masiva de datos
+	router.HandleFunc("/carga_masiva", cargaDatos).Methods("POST")
+
+	// puerto principal para la escucha
 	log.Fatal(http.ListenAndServe(":4000", router))
 
 }

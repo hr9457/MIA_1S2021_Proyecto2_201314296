@@ -1,4 +1,6 @@
 
+
+
 **** configuracion para arrancar el docker  ****
 
 docker start  29636e21dca9 
@@ -16,8 +18,8 @@ docker exec -it dad034555e07 bash
 insert into rol(nombre_rol) values ('administrador');
 insert into rol(nombre_rol) values ('usuario');
 
-insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol)
-values('administrador','josue','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',1);
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol,password,id_interno)
+values('administrador','josue','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','administrador@gmail.com','administrador.png',1,'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','A0');
 
 
 insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol)
@@ -64,3 +66,6 @@ values('daniel','daniel','villagran','12-11-2021 09:26:50','12-11-2021 09:26:50'
 
 
 select * from  usuario; 
+
+
+update usuario set password='a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3' where id_usuario=2;
