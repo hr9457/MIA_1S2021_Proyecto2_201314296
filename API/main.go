@@ -11,11 +11,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
 	_ "github.com/mattn/go-oci8"
+	"github.com/mitchellh/mapstructure"
+	"github.com/spf13/viper"
 )
 
 // ***********************************************************************************************
@@ -81,6 +84,120 @@ func get_image(nombre_imagen string) string {
 	base64Encoding += toBase64(bytes)
 	// fmt.Println(base64Encoding)
 	return base64Encoding
+}
+
+func mapearDatos(datos string) {
+	// ------------------------------
+	// fechaInicioJornada := 0
+	// ------------------------------
+	vi := viper.New()
+	vi.SetConfigType("yaml")
+	var archivoEntrada = []byte(datos)
+	vi.ReadConfig(bytes.NewBuffer(archivoEntrada))
+	fDatos := vi.AllSettings()
+	// fmt.Println(fDatos)
+	//------------------------------------
+	// separacion en structura de los datos
+
+	// mapstructure.Decode(fDatos, &usuario)
+	for id, datos := range fDatos {
+		fmt.Println("id_interno: " + id)
+		var usuario datos_usuario
+		err := mapstructure.Decode(datos, &usuario)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("nombre: " + usuario.NOMBRE)
+		fmt.Println("apellido: " + usuario.APELLIDO)
+		fmt.Println("password: " + usuario.PASSWORD)
+		fmt.Println("username: " + usuario.USERNAME)
+		fmt.Println("correo: " + usuario.USERNAME)
+
+		// datos de las temporadas
+		for i := 0; i < len(usuario.RESULTADOS); i++ {
+			var nombreTemporada = strings.Split(usuario.RESULTADOS[i].TEMPORADA, "-")
+			var mesTemporada = strings.Split(nombreTemporada[1], "Q")
+			fmt.Println("--Nombre Temporada: " + nombreTemporada[1])
+			// ****** formateo para le fecha de finalizacion de la temporada
+			if mesTemporada[1] == "2" {
+				fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+				fmt.Println("--Fecha Fin Temporada: 29/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+			} else {
+				if mesTemporada[1] > "10" {
+					fmt.Println("--Fecha Inicio Temporada: 1/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					fmt.Println("--Fecha Fin Temporada: 30/" + mesTemporada[1] + "/" + nombreTemporada[0])
+				} else {
+					fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					fmt.Println("--Fecha Fin Temporada: 30/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+				}
+			}
+			//
+			fmt.Println("--Estado Temporada: Finalizada")
+			fmt.Println("--Tier: " + usuario.RESULTADOS[i].TIER)
+			// datos de las jornadas jugadas
+			for jornada := 0; jornada < len(usuario.RESULTADOS[i].JORNADAS); jornada++ {
+				fmt.Println("----Nombre Jornada: " + usuario.RESULTADOS[i].JORNADAS[jornada].JORNADA)
+				//
+				// *******  formateo de la jornada
+				var inicioJornada = strings.Split(usuario.RESULTADOS[i].JORNADAS[jornada].JORNADA, "J")
+				fechaIncio, err := strconv.Atoi(inicioJornada[1])
+				if err == nil {
+				}
+				var inicio = (fechaIncio*7 + 1) - 7
+				var fin = (fechaIncio * 7)
+				//
+				if inicio > 10 {
+					//
+					if mesTemporada[1] > "10" {
+						fmt.Println("----Fecha Inicio Jornada: " + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					} else {
+						fmt.Println("----Fecha Inicio Jornada: " + strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					}
+					//
+				} else {
+					//
+					if mesTemporada[1] > "10" {
+						fmt.Println("----Fecha Inicio Jornada: 0" + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					} else {
+						fmt.Println("----Fecha Inicio Jornada: 0" + strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					}
+					//
+				}
+				//
+				if fin > 10 {
+					//
+					if mesTemporada[1] > "10" {
+						fmt.Println("----Fecha Fin Jornada: " + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					} else {
+						fmt.Println("----Fecha Fin Jornada: " + strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					}
+					//
+				} else {
+					//
+					if mesTemporada[1] > "10" {
+						fmt.Println("----Fecha Fin Jornada: 0" + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					} else {
+						fmt.Println("----Fecha Fin Jornada: 0" + strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					}
+					//
+				}
+				// ******* formateo para el fin de la jornada
+				//
+				//
+				// nivel de los datos de los deportes
+				for deporte := 0; deporte < len(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES); deporte++ {
+					fmt.Println("------Deporte: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].DEPORTE)
+					fmt.Println("------Fecha Inicio: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].FECHA)
+					fmt.Println("------Equipo visitante: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].VISITANTE)
+					fmt.Println("------Equipo Local: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].LOCAL)
+					fmt.Println("------P. Visitante: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.VISITANTE))
+					fmt.Println("------P. Local: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.LOCAL))
+					fmt.Println("------R. Visitante: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.VISITANTE))
+					fmt.Println("------R. Local: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.LOCAL))
+				}
+			}
+		}
+	}
 }
 
 // ***********************************************************************************************
@@ -165,6 +282,58 @@ type dato_actualizado struct {
 	CORREO           string
 	PASSWORD         string
 	// FOTO_PERFIL string
+}
+
+// *******************************************
+// struct para leer la data de la carga masiva
+
+// struct para sacar la info de los usuario
+type datos_usuario struct {
+	NOMBRE     string
+	APELLIDO   string
+	PASSWORD   string
+	USERNAME   string
+	RESULTADOS []datos_temporadas
+}
+
+// struct para las temporadas
+type datos_temporadas struct {
+	TEMPORADA string
+	TIER      string
+	JORNADAS  []datos_jornadas
+}
+
+// struct para jornadas
+type datos_jornadas struct {
+	JORNADA      string
+	PREDICCIONES []datos_deportes
+}
+
+// struct para deportes
+type datos_deportes struct {
+	DEPORTE    string
+	FECHA      string
+	VISITANTE  string
+	LOCAL      string
+	PREDICCION datos_prediccion
+	RESULTADO  datos_resultado
+}
+
+// struct para prediccion
+type datos_prediccion struct {
+	VISITANTE int
+	LOCAL     int
+}
+
+// struc para resultado del juego
+type datos_resultado struct {
+	VISITANTE int
+	LOCAL     int
+}
+
+// struct para recibira la data
+type data_cargaMasiva struct {
+	DATA string
 }
 
 // ****************************************************************************
@@ -450,16 +619,6 @@ func set_usuarioNuevo(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// pureba de get para obtener los estados registrado para los eventos
-// func get_estadosEventos(w http.ResponseWriter, r *http.Request) {
-// 	estados, err := consultar_estadoEvento()
-// 	if err != nil {
-// 		fmt.Printf("Error al obtener los estados")
-// 	} else {
-// 		json.NewEncoder(w).Encode(estados)
-// 	}
-// }
-
 // get para obtener los usuario registrados
 func get_usuarios(w http.ResponseWriter, r *http.Request) {
 	usuario, err := consultar_usuarios()
@@ -562,10 +721,19 @@ func prueba_post(w http.ResponseWriter, r *http.Request) {
 }
 
 func cargaDatos(w http.ResponseWriter, r *http.Request) {
-	fmt.Println(r.Body)
+	var datos data_cargaMasiva
+	reqBody, _ := ioutil.ReadAll(r.Body)
+	json.Unmarshal(reqBody, &datos)
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
+	// -----------------------------------
+	mapearDatos(datos.DATA)
+	// ------------------------------------
+	var mensajeRespuesta confirmacion
+	mensajeRespuesta.MENSAJE = "Datos Recibidos"
+	mensajeRespuesta.TIPO = 1
+	json.NewEncoder(w).Encode(mensajeRespuesta)
 }
 
 // ****************************************************************************

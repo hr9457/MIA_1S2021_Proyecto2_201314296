@@ -7,6 +7,7 @@ import Col from 'reactstrap/lib/Col';
 import Row from 'reactstrap/lib/Row';
 import yaml from 'js-yaml';
 
+import envioData from 'views/administracion/envioData.js'
 
 
 var resultYaml;
@@ -29,20 +30,23 @@ function Administracion(){
         
         reader.onload = function() {
             // console.log(reader.result);
-            resultYaml = yaml.load(reader.result);
+            resultYaml = reader.result;
+            // resultYaml = yaml.load(reader.result);
             // console.log(resultYaml);
-            var obejtoJS = Object.values(resultYaml);
-            console.log(obejtoJS);
-            // console.log(obejtoJS.A2.nombre);
-            // console.log(obejtoJS.A2.apellido);
-            // console.log(obejtoJS.A2.password);
-            // console.log(obejtoJS.A2.username);
-            // console.log(JSON.parse(resultYaml).nombre);
+            // console.log(resultYaml)
+            // var obejtoJS = Object.values(resultYaml);
+            // console.log(obejtoJS);
         };
         
         reader.onerror = function() {
             console.log(reader.error);
         };
+    }
+
+
+    // evento para enviar los datos del archivo
+    const enviarDatos = async () =>{
+        envioData(resultYaml);
     }
 
    
@@ -67,7 +71,7 @@ function Administracion(){
                         <CardBody>
                             <input id="files" type="file" name="files"  onChange={imprimirDatos}></input>
                             <br/>
-                            <Button color="info" size="lg" ><h2>Cargar</h2></Button>
+                            <Button color="info" size="lg" onClick={enviarDatos}><h2>Cargar</h2></Button>
                         </CardBody>
                     </Card> 
                 </Col>                          
