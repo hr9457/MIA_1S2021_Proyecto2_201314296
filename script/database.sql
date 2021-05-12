@@ -9,7 +9,7 @@ CREATE TABLE estado_temporada(
 
 CREATE SEQUENCE aumento_estado_temporada
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_estado_temporada
 BEFORE INSERT ON estado_temporada
@@ -29,7 +29,7 @@ CREATE TABLE fase(
 
 CREATE SEQUENCE aumento_fase
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_fase
 BEFORE INSERT ON fase
@@ -51,7 +51,7 @@ CREATE TABLE estado_evento(
 
 CREATE SEQUENCE aumento_estado_evento
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_estado_evento
 BEFORE INSERT ON estado_evento
@@ -73,7 +73,7 @@ CREATE TABLE deporte(
 
 CREATE SEQUENCE aumento_deporte
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_deporte
 BEFORE INSERT ON deporte
@@ -92,7 +92,7 @@ CREATE TABLE equipo_jugador(
 
 CREATE SEQUENCE aumento_equipo_jugador
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_equipo_jugador
 BEFORE INSERT ON equipo_jugador
@@ -112,7 +112,7 @@ CREATE TABLE rol(
 
 CREATE SEQUENCE aumento_rol
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_rol
 BEFORE INSERT ON rol
@@ -133,7 +133,7 @@ CREATE TABLE membresia(
 
 CREATE SEQUENCE aumento_membresia
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_membresia
 BEFORE INSERT ON membresia
@@ -161,7 +161,7 @@ CREATE TABLE temporada(
 
 CREATE SEQUENCE aumento_temporada
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_temporada
 BEFORE INSERT ON temporada
@@ -187,7 +187,7 @@ CREATE TABLE jornada(
 
 CREATE SEQUENCE aumento_jornada
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_jornada
 BEFORE INSERT ON jornada
@@ -219,7 +219,7 @@ CREATE TABLE evento_deportivo(
 
 CREATE SEQUENCE aumento_evento_deportivo
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_evento_deportivo
 BEFORE INSERT ON evento_deportivo
@@ -236,7 +236,7 @@ END;
 -- tabla para guardar los usuarios 
 CREATE TABLE usuario(
     id_usuario NUMBER,
-    usarname VARCHAR2(20) NULL,    
+    usarname VARCHAR2(100) NULL,    
     nombre_usuario VARCHAR2(30) NULL,
     apellido_usuario VARCHAR2(30) NULL,
     fecha_nacimiento TIMESTAMP NULL,
@@ -253,7 +253,7 @@ CREATE TABLE usuario(
 
 CREATE SEQUENCE aumento_usuario
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_usuario
 BEFORE INSERT ON usuario 
@@ -280,7 +280,7 @@ CREATE TABLE prediccion(
 
 CREATE SEQUENCE aumento_prediccion
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_prediccion
 BEFORE INSERT ON prediccion 
@@ -306,7 +306,7 @@ CREATE TABLE usuario_membresia(
 
 CREATE SEQUENCE aumento_usuario_memebresia
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_usuario_memebresia
 BEFORE INSERT ON usuario_membresia 
@@ -335,7 +335,7 @@ CREATE TABLE puntuacion(
 
 CREATE SEQUENCE aumento_puntuacion
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_puntuacion
 BEFORE INSERT ON puntuacion 
@@ -360,7 +360,7 @@ CREATE TABLE recompesa(
 
 CREATE SEQUENCE aumento_recompesa
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_recompesa
 BEFORE INSERT ON recompesa 
@@ -384,7 +384,7 @@ CREATE TABLE chat(
 
 CREATE SEQUENCE aumento_chat
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_chat
 BEFORE INSERT ON chat 
@@ -406,7 +406,7 @@ CREATE TABLE mensaje(
 
 CREATE SEQUENCE aumento_mensaje
 START WITH 1
-INCREMENT BY 1;
+INCREMENT BY 1 NOCACHE;
 
 CREATE OR REPLACE TRIGGER incremento_mensaje
 BEFORE INSERT ON mensaje
@@ -445,27 +445,65 @@ CREATE TABLE temporal(
 );
 
 
+
+
+
+
+
+-- registro de roles en el sistema
+insert into rol(nombre_rol) values ('administrador');
+insert into rol(nombre_rol) values ('usuario');
+
+
+-- insert de los tier en la plataforma
+insert into membresia(membresia.tipo_membresia,membresia.valor_membresia) values('gold',900);
+insert into membresia(membresia.tipo_membresia,membresia.valor_membresia) values('silver',450);
+insert into membresia(membresia.tipo_membresia,membresia.valor_membresia) values('bronze',150);
+
+
+-- insert de los estados de las temporadas
+insert into estado_temporada(estado_temporada.nombre_estado_temporada) values('finalizada');
+insert into estado_temporada(estado_temporada.nombre_estado_temporada) values('en proceso');
+
+
+
+-- registro del usuario administrador
 insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol,password)
 values('administrador','josue','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',1,'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 
 
-
-insert into usuario(id_interno,usarname,nombre_usuario,apellido_usuario,correo_electronico,password)
-select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario 
-from temporal 
-
-
-insert into usuario(usuario.id_interno,usuario.usarname,usuario.nombre_usuario,usuario.apellido_usuario,usuario.correo_electronico,usuario.password,usuario.fecha_registro,usuario.fk_id_rol)
-select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario,SYSDATE,rol.id_rol from temporal 
-inner join rol on rol.id_rol = 2;
+-- filtrado para carga masiva usarios
+insert into usuario(usuario.id_interno,usuario.usarname,usuario.nombre_usuario,usuario.apellido_usuario,usuario.correo_electronico,usuario.password,usuario.fecha_nacimiento,usuario.fecha_registro,usuario.fk_id_rol)
+		select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario,SYSDATE,SYSDATE,rol.id_rol from temporal
+		inner join rol on rol.id_rol = 2
 
 
-insert into usuario(usuario.id_interno,usuario.usarname,usuario.nombre_usuario,usuario.apellido_usuario,usuario.correo_electronico,usuario.password,usuario.fecha_nacimiento,usuario.fecha_registro,usuario.fk_id_rol) " +
-		"select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario,SYSDATE,SYSDATE,rol.id_rol from temporal " +
-		"inner join rol on rol.id_rol = 2
 
 
+
+-- filtrado para las temporadas
+insert into temporada(temporada.nombre_temporada,temporada.fecha_incio_temporada,temporada.fecha_finalizacion_temporada,temporada.puntuacion_temporada,temporada.fk_id_estado_temporada)
+select distinct temporal.nombre_temporada,TO_TIMESTAMP(temporal.fecha_inicio_temporada,'DD.MM.YYYY HH24:MI:SS'),TO_TIMESTAMP(temporal.fecha_fin_temporada,'DD.MM.YYYY HH24:MI:SS'),0,1 from temporal;
+
+
+-- filtrado de los tier de usuario temporada
+insert into usuario_membresia(usuario_membresia.fk_id_membresia,usuario_membresia.fk_id_usuario,usuario_membresia.fk_id_temporada)
+select  distinct membresia.id_membresia,usuario.id_usuario,temporada.id_temporada
+from temporal
+inner join membresia on membresia.tipo_membresia = temporal.tier_temporada
+inner join usuario on usuario.id_interno = temporal.id_interno_usr
+inner join temporada on temporada.nombre_temporada = temporal.nombre_temporada;
+
+
+select membresia.tipo_membresia 
+from membresia
+inner join usuario_membresia on usuario_membresia.fk_id_membresia = membresia.id_membresia; 
+
+
+
+
+-- consultas extras hechas aparte
 select distinct id_interno_usr,nombre_usuario,apellido_usuario from temporal;
 
 select nombre_usuario,apellido_usuario,correo_usuario,password_usuario,distinct id_interno_usr from temporal;

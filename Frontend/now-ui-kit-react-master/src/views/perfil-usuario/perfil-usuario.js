@@ -38,7 +38,7 @@ function ProfileUsser(){
 
     useEffect( async () => {
         let url = 'http://localhost:4000/image_perfil'
-        var data = {username:'Hektor_Orozco'}
+        var data = {username:cookies.get('username')}
 
         let respuesta;
 

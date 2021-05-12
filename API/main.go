@@ -55,7 +55,6 @@ func imagen(imagen_base64, username string) {
 			panic("Cannot open file")
 		}
 		png.Encode(f, im)
-
 	}
 }
 
@@ -72,7 +71,19 @@ func get_image(nombre_imagen string) string {
 	//
 	bytes, err := ioutil.ReadFile(imagen)
 	if err != nil {
-		log.Fatal(err)
+		var imagenDefault = "./image/sin_foto.png"
+		bytes, err := ioutil.ReadFile(imagenDefault)
+		if err != nil {
+		}
+		var Enco string
+		mimeType := http.DetectContentType(bytes)
+		switch mimeType {
+		case "image/png":
+			Enco += "data:image/png;base64,"
+		}
+		Enco += toBase64(bytes)
+		return Enco
+		// fmt.Println("aca este ese error", err)
 	}
 	//
 	var base64Encoding string
@@ -138,8 +149,14 @@ func mapearDatos(datos string) {
 			//  variables para guardar con el formato las fechas de la temporadas
 			var fecha_incio_temporada = ""
 			var fecha_fin_temporada = ""
+			// ---------------------
+			// tratado del mes de la temporada
+			var mes_de_temporada, errMesTemporada = strconv.Atoi(mesTemporada[1])
+			if errMesTemporada == nil {
+			}
+			//
 			// ****** formateo para le fecha de finalizacion de la temporada
-			if mesTemporada[1] == "2" {
+			if mes_de_temporada == 2 {
 				// fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
 				// fmt.Println("--Fecha Fin Temporada: 29/0" + mesTemporada[1] + "/" + nombreTemporada[0])
 				fecha_incio_temporada = "1/0" + mesTemporada[1] + "/" + nombreTemporada[0]
@@ -147,18 +164,18 @@ func mapearDatos(datos string) {
 				// fmt.Println("--Fecha Inicio Temporada: " + fecha_incio_temporada)
 				// fmt.Println("--Fecha Fin Temporada: " + fecha_fin_temporada)
 			} else {
-				if mesTemporada[1] > "10" {
+				if mes_de_temporada > 10 {
 					// fmt.Println("--Fecha Inicio Temporada: 1/" + mesTemporada[1] + "/" + nombreTemporada[0])
 					// fmt.Println("--Fecha Fin Temporada: 30/" + mesTemporada[1] + "/" + nombreTemporada[0])
 					fecha_incio_temporada = "1/" + mesTemporada[1] + "/" + nombreTemporada[0]
-					fecha_fin_temporada = "30/" + mesTemporada[1] + "/" + nombreTemporada[0]
+					fecha_fin_temporada = "29/" + mesTemporada[1] + "/" + nombreTemporada[0]
 					// fmt.Println("--Fecha Inicio Temporada: " + fecha_incio_temporada)
 					// fmt.Println("--Fecha Fin Temporada: " + fecha_fin_temporada)
 				} else {
 					// fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
 					// fmt.Println("--Fecha Fin Temporada: 30/0" + mesTemporada[1] + "/" + nombreTemporada[0])
 					fecha_incio_temporada = "1/0" + mesTemporada[1] + "/" + nombreTemporada[0]
-					fecha_fin_temporada = "30/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+					fecha_fin_temporada = "29/0" + mesTemporada[1] + "/" + nombreTemporada[0]
 					// fmt.Println("--Fecha Inicio Temporada: " + fecha_incio_temporada)
 					// fmt.Println("--Fecha Fin Temporada: " + fecha_fin_temporada)
 				}
@@ -629,6 +646,42 @@ func usuariosCargaMasiva() error {
 	return error
 }
 
+// consluta para hacer el filtrado
+func temporadasCargaMasiva() error {
+	db, error := obtenerConeccion()
+	if error != nil {
+		fmt.Println("Error al obtener conexion con la DB")
+		return error
+	}
+	defer db.Close()
+	// consulta
+	var sqlQuery = "insert into temporada(temporada.nombre_temporada,temporada.fecha_incio_temporada,temporada.fecha_finalizacion_temporada,temporada.puntuacion_temporada,temporada.fk_id_estado_temporada) " +
+		"select distinct temporal.nombre_temporada,TO_TIMESTAMP(temporal.fecha_inicio_temporada,'DD.MM.YYYY HH24:MI:SS'),TO_TIMESTAMP(temporal.fecha_fin_temporada,'DD.MM.YYYY HH24:MI:SS'),0,1 from temporal"
+	_, error = db.Exec(sqlQuery)
+	fmt.Println("temporadas registradas")
+	return error
+}
+
+// consulta para hacer el filtrado de usuario membresia
+func usuarioMembresiaCargaMasiva() error {
+	db, error := obtenerConeccion()
+	if error != nil {
+		fmt.Println("Error al obtener conexion con la DB")
+		return error
+	}
+	defer db.Close()
+	// consulta
+	var sqlQuery = "insert into usuario_membresia(usuario_membresia.fk_id_membresia,usuario_membresia.fk_id_usuario,usuario_membresia.fk_id_temporada) " +
+		"select  distinct membresia.id_membresia,usuario.id_usuario,temporada.id_temporada " +
+		"from temporal " +
+		"inner join membresia on membresia.tipo_membresia = temporal.tier_temporada " +
+		"inner join usuario on usuario.id_interno = temporal.id_interno_usr " +
+		"inner join temporada on temporada.nombre_temporada = temporal.nombre_temporada "
+	_, error = db.Exec(sqlQuery)
+	fmt.Println("memebresias por temporada registradas")
+	return error
+}
+
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
@@ -787,6 +840,7 @@ func get_image_profile(w http.ResponseWriter, r *http.Request) {
 	// retorno del imgaen gen base64
 	var imagen64 imagen_usuario
 	imagen64.FOTO_PERFIL = get_image(username.USERNAME)
+	// fmt.Println(imagen64.FOTO_PERFIL)
 	//
 	json.NewEncoder(w).Encode(imagen64)
 
@@ -837,9 +891,9 @@ func cargaDatos(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
-	// -----------------------------------
+	// ----------------------------------------------------------------------
 	mapearDatos(datos.DATA)
-	// ------------------------------------
+	// ----------------------------------------------------------------------
 	// cargar usuario de la tabla temporal
 	error := usuariosCargaMasiva()
 	if error != nil {
@@ -847,7 +901,21 @@ func cargaDatos(w http.ResponseWriter, r *http.Request) {
 	} else {
 		fmt.Println("Usuarios registrados en la base de datos")
 	}
-	// ------------------------------------
+	// carga temporadas
+	errorT := temporadasCargaMasiva()
+	if errorT != nil {
+		fmt.Println("Error en el registro de la temporadas", error)
+	} else {
+		fmt.Println("Temporadas registras en la base de datos")
+	}
+	// carga de memebresia por temporada
+	errorM := usuarioMembresiaCargaMasiva()
+	if errorM != nil {
+		fmt.Println("Error en el registro de membresia de usuarios", error)
+	} else {
+		fmt.Println("Memebresias por usuario registradas en la base de datos")
+	}
+	// ------------------------------------------------------------------------
 	var mensajeRespuesta confirmacion
 	mensajeRespuesta.MENSAJE = "Datos Recibidos"
 	mensajeRespuesta.TIPO = 1
