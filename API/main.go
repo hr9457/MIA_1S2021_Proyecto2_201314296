@@ -621,8 +621,11 @@ func usuariosCargaMasiva() error {
 	}
 	defer db.Close()
 	// consulta para hacer el filtrado en la base de datos
-	var sqlQuery = "insert into usuario()"
+	var sqlQuery = "insert into usuario(usuario.id_interno,usuario.usarname,usuario.nombre_usuario,usuario.apellido_usuario,usuario.correo_electronico,usuario.password,usuario.fecha_nacimiento,usuario.fecha_registro,usuario.fk_id_rol) " +
+		"select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario,SYSDATE,SYSDATE,rol.id_rol from temporal " +
+		"inner join rol on rol.id_rol = 2"
 	_, error = db.Exec(sqlQuery)
+	fmt.Println("insert usuario")
 	return error
 }
 
@@ -737,10 +740,20 @@ func get_login(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
 	//
-
+	// fmt.Println(datos.USERNAME)
+	// fmt.Println(datos.PASSWORD)
 	usuario, err := consultar_usuario(datos.USERNAME, datos.PASSWORD)
 	if err != nil {
 		fmt.Printf("Error en la consulta del inicio de sesion")
+		// ----------------------------------------------------
+		//
+		var usuario_no_econtrado [1]session
+		usuario_no_econtrado[0].ID = 0
+		usuario_no_econtrado[0].NOMBRE = "No Econtrado"
+		usuario_no_econtrado[0].USERNAME = "No Econtrado"
+		usuario_no_econtrado[0].TIPO = 0
+		//
+		json.NewEncoder(w).Encode(usuario_no_econtrado)
 	} else {
 		//
 		var usuario_no_econtrado [1]session
@@ -828,6 +841,12 @@ func cargaDatos(w http.ResponseWriter, r *http.Request) {
 	mapearDatos(datos.DATA)
 	// ------------------------------------
 	// cargar usuario de la tabla temporal
+	error := usuariosCargaMasiva()
+	if error != nil {
+		fmt.Println("Error en el registro de los usuarios", error)
+	} else {
+		fmt.Println("Usuarios registrados en la base de datos")
+	}
 	// ------------------------------------
 	var mensajeRespuesta confirmacion
 	mensajeRespuesta.MENSAJE = "Datos Recibidos"

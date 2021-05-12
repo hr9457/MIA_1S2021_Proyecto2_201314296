@@ -69,3 +69,6 @@ select * from  usuario;
 
 
 update usuario set password='a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3' where id_usuario=2;
+
+
+delete from usuario where usuario.id_usuario=44;

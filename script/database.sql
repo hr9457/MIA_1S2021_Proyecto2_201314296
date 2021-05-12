@@ -461,6 +461,11 @@ select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,co
 inner join rol on rol.id_rol = 2;
 
 
+insert into usuario(usuario.id_interno,usuario.usarname,usuario.nombre_usuario,usuario.apellido_usuario,usuario.correo_electronico,usuario.password,usuario.fecha_nacimiento,usuario.fecha_registro,usuario.fk_id_rol) " +
+		"select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario,SYSDATE,SYSDATE,rol.id_rol from temporal " +
+		"inner join rol on rol.id_rol = 2
+
+
 select distinct id_interno_usr,nombre_usuario,apellido_usuario from temporal;
 
 select nombre_usuario,apellido_usuario,correo_usuario,password_usuario,distinct id_interno_usr from temporal;

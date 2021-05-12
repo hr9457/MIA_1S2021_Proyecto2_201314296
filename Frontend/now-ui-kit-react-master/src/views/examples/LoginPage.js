@@ -65,8 +65,10 @@ function LoginPage() {
     // event.preventDefault();
     let respuesta = await IniciarSession(datos.usuario,datos.password);    
 
+    // console.log(respuesta);
+
     // REDIRECCION
-    if(respuesta[0].TIPO === 0)
+    if(respuesta[0].TIPO === 0 || respuesta === null)
     {
       mostrarAlerta("ERROR","Usuario no Encontrado","error"); 
       return;
