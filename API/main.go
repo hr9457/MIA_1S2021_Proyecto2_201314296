@@ -2,8 +2,10 @@ package main
 
 import (
 	"bytes"
+	"crypto/sha256"
 	"database/sql"
 	"encoding/base64"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"image/png"
@@ -86,8 +88,20 @@ func get_image(nombre_imagen string) string {
 	return base64Encoding
 }
 
+// funcion para encriptar passwor de usuario con sha256
+func encriptarPassword(password string) string {
+	hash := sha256.New()
+	hash.Write([]byte(password))
+	return hex.EncodeToString(hash.Sum(nil))
+}
+
+// funcionp para mapear los datos
 func mapearDatos(datos string) {
 	// ------------------------------
+	var contador = 0
+	var estadoTemporada = "finalizada"
+	// fecha_incio_temporada := ""
+	// fecha_fin_temporada := ""
 	// fechaInicioJornada := 0
 	// ------------------------------
 	vi := viper.New()
@@ -101,42 +115,60 @@ func mapearDatos(datos string) {
 
 	// mapstructure.Decode(fDatos, &usuario)
 	for id, datos := range fDatos {
-		fmt.Println("id_interno: " + id)
+		// -------------------------------
+		// apertura de coneccion
+		db, error := obtenerConeccion()
+		// fmt.Println("id_interno: " + id)
 		var usuario datos_usuario
 		err := mapstructure.Decode(datos, &usuario)
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println("nombre: " + usuario.NOMBRE)
-		fmt.Println("apellido: " + usuario.APELLIDO)
-		fmt.Println("password: " + usuario.PASSWORD)
-		fmt.Println("username: " + usuario.USERNAME)
-		fmt.Println("correo: " + usuario.USERNAME)
+		// fmt.Println("nombre: " + usuario.NOMBRE)
+		// fmt.Println("apellido: " + usuario.APELLIDO)
+		// fmt.Println("password: " + usuario.PASSWORD)
+		// fmt.Println("username: " + usuario.USERNAME)
+		// fmt.Println("correo: " + usuario.USERNAME)
 
 		// datos de las temporadas
 		for i := 0; i < len(usuario.RESULTADOS); i++ {
 			var nombreTemporada = strings.Split(usuario.RESULTADOS[i].TEMPORADA, "-")
 			var mesTemporada = strings.Split(nombreTemporada[1], "Q")
-			fmt.Println("--Nombre Temporada: " + nombreTemporada[1])
+			// fmt.Println("--Nombre Temporada: " + nombreTemporada[1])
+			//  variables para guardar con el formato las fechas de la temporadas
+			var fecha_incio_temporada = ""
+			var fecha_fin_temporada = ""
 			// ****** formateo para le fecha de finalizacion de la temporada
 			if mesTemporada[1] == "2" {
-				fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
-				fmt.Println("--Fecha Fin Temporada: 29/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+				// fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+				// fmt.Println("--Fecha Fin Temporada: 29/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+				fecha_incio_temporada = "1/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+				fecha_fin_temporada = "28/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+				// fmt.Println("--Fecha Inicio Temporada: " + fecha_incio_temporada)
+				// fmt.Println("--Fecha Fin Temporada: " + fecha_fin_temporada)
 			} else {
 				if mesTemporada[1] > "10" {
-					fmt.Println("--Fecha Inicio Temporada: 1/" + mesTemporada[1] + "/" + nombreTemporada[0])
-					fmt.Println("--Fecha Fin Temporada: 30/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					// fmt.Println("--Fecha Inicio Temporada: 1/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					// fmt.Println("--Fecha Fin Temporada: 30/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					fecha_incio_temporada = "1/" + mesTemporada[1] + "/" + nombreTemporada[0]
+					fecha_fin_temporada = "30/" + mesTemporada[1] + "/" + nombreTemporada[0]
+					// fmt.Println("--Fecha Inicio Temporada: " + fecha_incio_temporada)
+					// fmt.Println("--Fecha Fin Temporada: " + fecha_fin_temporada)
 				} else {
-					fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
-					fmt.Println("--Fecha Fin Temporada: 30/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					// fmt.Println("--Fecha Inicio Temporada: 1/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					// fmt.Println("--Fecha Fin Temporada: 30/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					fecha_incio_temporada = "1/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+					fecha_fin_temporada = "30/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+					// fmt.Println("--Fecha Inicio Temporada: " + fecha_incio_temporada)
+					// fmt.Println("--Fecha Fin Temporada: " + fecha_fin_temporada)
 				}
 			}
 			//
-			fmt.Println("--Estado Temporada: Finalizada")
-			fmt.Println("--Tier: " + usuario.RESULTADOS[i].TIER)
+			// fmt.Println("--Estado Temporada: Finalizada")
+			// fmt.Println("--Tier: " + usuario.RESULTADOS[i].TIER)
 			// datos de las jornadas jugadas
 			for jornada := 0; jornada < len(usuario.RESULTADOS[i].JORNADAS); jornada++ {
-				fmt.Println("----Nombre Jornada: " + usuario.RESULTADOS[i].JORNADAS[jornada].JORNADA)
+				// fmt.Println("----Nombre Jornada: " + usuario.RESULTADOS[i].JORNADAS[jornada].JORNADA)
 				//
 				// *******  formateo de la jornada
 				var inicioJornada = strings.Split(usuario.RESULTADOS[i].JORNADAS[jornada].JORNADA, "J")
@@ -146,38 +178,62 @@ func mapearDatos(datos string) {
 				var inicio = (fechaIncio*7 + 1) - 7
 				var fin = (fechaIncio * 7)
 				//
+				// fechas de inicio y fin de una jornada
+				var fecha_incio_jornada = ""
+				var fecha_fin_jornada = ""
+				var mesJornada, errM = strconv.Atoi(mesTemporada[1])
+				if errM == nil {
+				}
+				//
+				//  para revision de la fecha inicio de la temporada
 				if inicio > 10 {
 					//
-					if mesTemporada[1] > "10" {
-						fmt.Println("----Fecha Inicio Jornada: " + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
-					} else {
-						fmt.Println("----Fecha Inicio Jornada: " + strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+					if mesJornada > 10 {
+						// fmt.Println("----Fecha Inicio Jornada: " + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_incio_jornada = strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Inicio Jornada: " + fecha_incio_jornada)
+					} else if mesJornada < 10 {
+						// fmt.Println("----Fecha Inicio Jornada: " + strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_incio_jornada = strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Inicio Jornada: " + fecha_incio_jornada)
 					}
 					//
 				} else {
 					//
-					if mesTemporada[1] > "10" {
-						fmt.Println("----Fecha Inicio Jornada: 0" + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					if mesJornada > 10 {
+						// fmt.Println("----Fecha Inicio Jornada: 0" + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_incio_jornada = "0" + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Inicio Jornada: " + fecha_incio_jornada)
 					} else {
-						fmt.Println("----Fecha Inicio Jornada: 0" + strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+						// fmt.Println("----Fecha Inicio Jornada: 0" + strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_incio_jornada = "0" + strconv.Itoa(inicio) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Inicio Jornada: " + fecha_incio_jornada)
 					}
 					//
 				}
-				//
+				// para revision de la fecha final de la jornada
 				if fin > 10 {
 					//
-					if mesTemporada[1] > "10" {
-						fmt.Println("----Fecha Fin Jornada: " + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					if mesJornada > 10 {
+						// fmt.Println("----Fecha Fin Jornada: " + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_fin_jornada = strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Fin Jornada: " + fecha_fin_jornada)
 					} else {
-						fmt.Println("----Fecha Fin Jornada: " + strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+						// fmt.Println("----Fecha Fin Jornada: " + strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_fin_jornada = strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Fin Jornada: " + fecha_fin_jornada)
 					}
 					//
 				} else {
 					//
-					if mesTemporada[1] > "10" {
-						fmt.Println("----Fecha Fin Jornada: 0" + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+					if mesJornada > 10 {
+						// fmt.Println("----Fecha Fin Jornada: 0" + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_fin_jornada = "0" + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Fin Jornada: " + fecha_fin_jornada)
 					} else {
-						fmt.Println("----Fecha Fin Jornada: 0" + strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+						// fmt.Println("----Fecha Fin Jornada: 0" + strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0])
+						fecha_fin_jornada = "0" + strconv.Itoa(fin) + "/0" + mesTemporada[1] + "/" + nombreTemporada[0]
+						// fmt.Println("----Fecha Fin Jornada: " + fecha_fin_jornada)
 					}
 					//
 				}
@@ -186,17 +242,44 @@ func mapearDatos(datos string) {
 				//
 				// nivel de los datos de los deportes
 				for deporte := 0; deporte < len(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES); deporte++ {
-					fmt.Println("------Deporte: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].DEPORTE)
-					fmt.Println("------Fecha Inicio: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].FECHA)
-					fmt.Println("------Equipo visitante: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].VISITANTE)
-					fmt.Println("------Equipo Local: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].LOCAL)
-					fmt.Println("------P. Visitante: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.VISITANTE))
-					fmt.Println("------P. Local: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.LOCAL))
-					fmt.Println("------R. Visitante: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.VISITANTE))
-					fmt.Println("------R. Local: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.LOCAL))
+					// fmt.Println("------Deporte: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].DEPORTE)
+					// fmt.Println("------Fecha Inicio: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].FECHA)
+					// fmt.Println("------Equipo visitante: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].VISITANTE)
+					// fmt.Println("------Equipo Local: " + usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].LOCAL)
+					// fmt.Println("------P. Visitante: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.VISITANTE))
+					// fmt.Println("------P. Local: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.LOCAL))
+					// fmt.Println("------R. Visitante: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.VISITANTE))
+					// fmt.Println("------R. Local: " + strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.LOCAL))
+
+					// INSERT A LA BASE DE DATOS EN LA TABLA TEMPORAL
+					// coneccion con la base de datos
+					// db, error := obtenerConeccion()
+					if error != nil {
+						fmt.Println("Error al obtener la conexion con DB")
+						// fin de conexion
+						defer db.Close()
+					} else {
+						// insert en la base de datos
+						_, err = db.Exec("insert into temporal(id_interno_usr,nombre_usuario,apellido_usuario,password_usuario,username_usuario,correo_usuario,nombre_temporada,fecha_inicio_temporada,fecha_fin_temporada,estado_temporada,tier_temporada,nombre_jornada,fecha_inicio_jornada,fecha_fin_jornada,deporte,fecha_evento_deportivo,equipo_visitante,equipo_local,prediccion_visitante,prediccion_local,resultado_vistante,resultado_local) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17,:18,:19,:20,:21,:22) ", id, usuario.NOMBRE, usuario.APELLIDO, encriptarPassword(usuario.PASSWORD), usuario.USERNAME, usuario.USERNAME, nombreTemporada[1], fecha_incio_temporada, fecha_fin_temporada, estadoTemporada, usuario.RESULTADOS[i].TIER, usuario.RESULTADOS[i].JORNADAS[jornada].JORNADA, fecha_incio_jornada, fecha_fin_jornada, usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].DEPORTE, usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].FECHA, usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].VISITANTE, usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].LOCAL, strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.VISITANTE), strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].PREDICCION.LOCAL), strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.VISITANTE), strconv.Itoa(usuario.RESULTADOS[i].JORNADAS[jornada].PREDICCIONES[deporte].RESULTADO.LOCAL))
+
+						contador = contador + 1
+
+						if err != nil {
+							fmt.Println(err)
+							fmt.Println("Fallo en el registro No. " + strconv.Itoa(contador))
+						} else {
+							fmt.Println("Registro realizado No." + strconv.Itoa(contador))
+
+						}
+						// defer db.Close()
+					}
+					// fin de la consulta para insertar los valores a la tabla temporal
+
 				}
 			}
 		}
+		// cierre de conexion despues de registro de actividades por usuario
+		defer db.Close()
 	}
 }
 
@@ -529,6 +612,20 @@ func actualizar(usuario dato_actualizado) error {
 	return error
 }
 
+// consulta para insertar los usuario de la tabla temporal a la base de datos
+func usuariosCargaMasiva() error {
+	db, error := obtenerConeccion()
+	if error != nil {
+		fmt.Println("Error al obtener conexion con la DB")
+		return error
+	}
+	defer db.Close()
+	// consulta para hacer el filtrado en la base de datos
+	var sqlQuery = "insert into usuario()"
+	_, error = db.Exec(sqlQuery)
+	return error
+}
+
 // ***********************************************************************************************
 // ***********************************************************************************************
 // ***********************************************************************************************
@@ -729,6 +826,8 @@ func cargaDatos(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	// -----------------------------------
 	mapearDatos(datos.DATA)
+	// ------------------------------------
+	// cargar usuario de la tabla temporal
 	// ------------------------------------
 	var mensajeRespuesta confirmacion
 	mensajeRespuesta.MENSAJE = "Datos Recibidos"

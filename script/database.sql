@@ -414,3 +414,56 @@ FOR EACH ROW
 BEGIN
     select aumento_mensaje.nextval into :new.id_mensaje from dual;
 END;
+
+
+
+
+-- tabla temporal para carga de datos 
+CREATE TABLE temporal(
+    id_interno_usr          VARCHAR2(100),
+    nombre_usuario          VARCHAR2(100),
+    apellido_usuario        VARCHAR2(100),
+    password_usuario        VARCHAR2(100),
+    username_usuario        VARCHAR2(100),
+    correo_usuario          VARCHAR2(100),
+    nombre_temporada        VARCHAR2(100),
+    fecha_inicio_temporada  VARCHAR2(100),
+    fecha_fin_temporada     VARCHAR2(100),
+    estado_temporada        VARCHAR2(100), 
+    tier_temporada          VARCHAR2(100),
+    nombre_jornada          VARCHAR2(100),
+    fecha_inicio_jornada    VARCHAR2(100),
+    fecha_fin_jornada       VARCHAR2(100),
+    deporte                 VARCHAR2(100),
+    fecha_evento_deportivo  VARCHAR2(100),
+    equipo_visitante        VARCHAR2(100),
+    equipo_local            VARCHAR2(100),
+    prediccion_visitante    VARCHAR2(100),
+    prediccion_local        VARCHAR2(100),
+    resultado_vistante      VARCHAR2(100),
+    resultado_local         VARCHAR2(100)
+);
+
+
+insert into usuario(usarname,nombre_usuario,apellido_usuario,fecha_nacimiento,fecha_registro,correo_electronico,foto_perfil,fk_id_rol,password)
+values('administrador','josue','salazar','12-11-2021 09:26:50','12-11-2021 09:26:50','correo','direccion',1,'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+
+
+
+
+insert into usuario(id_interno,usarname,nombre_usuario,apellido_usuario,correo_electronico,password)
+select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario 
+from temporal 
+
+
+insert into usuario(usuario.id_interno,usuario.usarname,usuario.nombre_usuario,usuario.apellido_usuario,usuario.correo_electronico,usuario.password,usuario.fecha_registro,usuario.fk_id_rol)
+select distinct id_interno_usr,correo_usuario,nombre_usuario,apellido_usuario,correo_usuario,password_usuario,SYSDATE,rol.id_rol from temporal 
+inner join rol on rol.id_rol = 2;
+
+
+select distinct id_interno_usr,nombre_usuario,apellido_usuario from temporal;
+
+select nombre_usuario,apellido_usuario,correo_usuario,password_usuario,distinct id_interno_usr from temporal;
+
+select distinct id_interno_usr, nombre_usuario,apellido_usuario,correo_usuario,password_usuario from temporal;
+
