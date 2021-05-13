@@ -164,7 +164,7 @@ func mapearDatos(datos string) {
 				// fmt.Println("--Fecha Inicio Temporada: " + fecha_incio_temporada)
 				// fmt.Println("--Fecha Fin Temporada: " + fecha_fin_temporada)
 			} else {
-				if mes_de_temporada > 10 {
+				if mes_de_temporada >= 10 {
 					// fmt.Println("--Fecha Inicio Temporada: 1/" + mesTemporada[1] + "/" + nombreTemporada[0])
 					// fmt.Println("--Fecha Fin Temporada: 30/" + mesTemporada[1] + "/" + nombreTemporada[0])
 					fecha_incio_temporada = "1/" + mesTemporada[1] + "/" + nombreTemporada[0]
@@ -203,9 +203,9 @@ func mapearDatos(datos string) {
 				}
 				//
 				//  para revision de la fecha inicio de la temporada
-				if inicio > 10 {
+				if inicio >= 10 {
 					//
-					if mesJornada > 10 {
+					if mesJornada >= 10 {
 						// fmt.Println("----Fecha Inicio Jornada: " + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
 						fecha_incio_jornada = strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
 						// fmt.Println("----Fecha Inicio Jornada: " + fecha_incio_jornada)
@@ -217,7 +217,7 @@ func mapearDatos(datos string) {
 					//
 				} else {
 					//
-					if mesJornada > 10 {
+					if mesJornada >= 10 {
 						// fmt.Println("----Fecha Inicio Jornada: 0" + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
 						fecha_incio_jornada = "0" + strconv.Itoa(inicio) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
 						// fmt.Println("----Fecha Inicio Jornada: " + fecha_incio_jornada)
@@ -229,9 +229,9 @@ func mapearDatos(datos string) {
 					//
 				}
 				// para revision de la fecha final de la jornada
-				if fin > 10 {
+				if fin >= 10 {
 					//
-					if mesJornada > 10 {
+					if mesJornada >= 10 {
 						// fmt.Println("----Fecha Fin Jornada: " + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
 						fecha_fin_jornada = strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
 						// fmt.Println("----Fecha Fin Jornada: " + fecha_fin_jornada)
@@ -243,7 +243,7 @@ func mapearDatos(datos string) {
 					//
 				} else {
 					//
-					if mesJornada > 10 {
+					if mesJornada >= 10 {
 						// fmt.Println("----Fecha Fin Jornada: 0" + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0])
 						fecha_fin_jornada = "0" + strconv.Itoa(fin) + "/" + mesTemporada[1] + "/" + nombreTemporada[0]
 						// fmt.Println("----Fecha Fin Jornada: " + fecha_fin_jornada)
@@ -434,6 +434,14 @@ type datos_resultado struct {
 // struct para recibira la data
 type data_cargaMasiva struct {
 	DATA string
+}
+
+// struct para recbir la informacion de las temporadas
+type data_temporada struct {
+	Nombre            string
+	FechaInicio       string
+	FechaFinalizacion string
+	Puntuacion        int
 }
 
 // ****************************************************************************
@@ -627,6 +635,37 @@ func actualizar(usuario dato_actualizado) error {
 	_, error = db.Exec("update usuario set  nombre_usuario='" + usuario.NOMBRE + "', apellido_usuario='" + usuario.APELLIDO + "', fecha_nacimiento = TO_DATE('" + usuario.FECHA_NACIMIENTO + "','YYYY-MM-DD'), correo_electronico='" + usuario.CORREO + "', password='" + usuario.PASSWORD + "' where usarname='" + usuario.USERNAME + "' ")
 
 	return error
+}
+
+// consulta para ver las temporadas insertadas en la base de datos
+func get_temporadas() ([]data_temporada, error) {
+	temporada := []data_temporada{}
+	db, error := obtenerConeccion()
+	if error != nil {
+		fmt.Println("Error al obtener la conexion con la DB")
+		return nil, error
+	}
+	defer db.Close()
+	//
+	var sqlQuery = "select temporada.nombre_temporada,temporada.fecha_incio_temporada,temporada.fecha_finalizacion_temporada,temporada.puntuacion_temporada from temporada"
+	rows, err := db.Query(sqlQuery)
+
+	if err != nil {
+		log.Fatal("Error \n", err)
+	}
+	defer rows.Close()
+
+	var resultado_peticion data_temporada
+
+	for rows.Next() {
+		err = rows.Scan(&resultado_peticion.Nombre, &resultado_peticion.FechaInicio, &resultado_peticion.FechaFinalizacion, &resultado_peticion.Puntuacion)
+		if err != nil {
+			return nil, err
+		}
+		temporada = append(temporada, resultado_peticion)
+	}
+	return temporada, nil
+
 }
 
 // consulta para insertar los usuario de la tabla temporal a la base de datos
@@ -884,6 +923,18 @@ func prueba_post(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(datos2)
 }
 
+func obtenerTemporadas(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
+	temporadas, err := get_temporadas()
+	if err != nil {
+		fmt.Println("->", err)
+	} else {
+		json.NewEncoder(w).Encode(temporadas)
+	}
+}
+
 func cargaDatos(w http.ResponseWriter, r *http.Request) {
 	var datos data_cargaMasiva
 	reqBody, _ := ioutil.ReadAll(r.Body)
@@ -957,6 +1008,9 @@ func main() {
 
 	// carga masiva de datos
 	router.HandleFunc("/carga_masiva", cargaDatos).Methods("POST")
+
+	// router para obtener los datos de la temporadas registradas
+	router.HandleFunc("/temporadas", obtenerTemporadas).Methods("GET")
 
 	// puerto principal para la escucha
 	log.Fatal(http.ListenAndServe(":4000", router))

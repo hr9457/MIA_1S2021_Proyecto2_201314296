@@ -34,6 +34,11 @@ function redirigir_formulario(){
   window.location.href="./registro-usuario";
 }
 
+// funcion para redirigir al formulario de recuperacion de password
+function recuperacionPassword(){
+  window.location.href="./recuperar-password"
+}
+
 
 function LoginPage() {  
 
@@ -224,9 +229,9 @@ function LoginPage() {
                         <a
                           className="link"
                           href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={recuperacionPassword}
                         >
-                          Ayuda
+                          Recuperar Password
                         </a>
                       </h6>
                     </div>

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Button from 'reactstrap/lib/Button';
 import Card from 'reactstrap/lib/Card';
 import CardBody from 'reactstrap/lib/CardBody';
@@ -6,6 +6,8 @@ import CardHeader from 'reactstrap/lib/CardHeader';
 import Col from 'reactstrap/lib/Col';
 import Row from 'reactstrap/lib/Row';
 import yaml from 'js-yaml';
+import axios from 'axios';
+import MaterialTable from 'material-table';
 
 import envioData from 'views/administracion/envioData.js'
 
@@ -16,10 +18,41 @@ var resultYaml;
 function back(){
     window.location.href="./perfil-admi"; 
 }
+
+
+const url="http://localhost:4000/temporadas"
  
 
 // pagina de a rederizar
 function Administracion(){
+
+    const [data,setData] = useState([]);
+
+    const columnas = [
+        {tittle:'Nombre',field:'Nombre'},
+        {tittle:'FechaInicio',field:'FechaInicio'},
+        {tittle:'FechaFinalizacion',field:'FechaFinalizacion'},
+        {tittle:'Puntuacon',field:'Puntuacion',type:'numeric'}
+    ]
+
+    const datos =[
+        {nombre:'Q3',fechaInicio:'2/07/1994',fechaFinalizacion:'2/07/1194',puntuacion:0}
+    ];
+
+
+
+
+    const peticionGet = async()=>{
+        await axios.get(url)
+        .then(response=>{
+            setData(response.data);
+            console.log(response.data);
+        })
+    }
+
+    useEffect(() => {
+        peticionGet();
+    },[])
 
 
     // evento para tener los datos del archivo YAML
@@ -78,7 +111,18 @@ function Administracion(){
             </Row>
 
 
+            <div>
+                <h1>Reportes</h1>
+                <MaterialTable
+                    columns={columnas}
+                    data={data}
+                    title='Temporadas Registradas'
+                />
+            </div>
+
+
         </div>
+
         
 
     );

@@ -237,11 +237,11 @@ END;
 CREATE TABLE usuario(
     id_usuario NUMBER,
     usarname VARCHAR2(100) NULL,    
-    nombre_usuario VARCHAR2(30) NULL,
-    apellido_usuario VARCHAR2(30) NULL,
+    nombre_usuario VARCHAR2(50) NULL,
+    apellido_usuario VARCHAR2(50) NULL,
     fecha_nacimiento TIMESTAMP NULL,
     fecha_registro TIMESTAMP NULL,
-    correo_electronico VARCHAR2(30) NULL ,
+    correo_electronico VARCHAR2(50) NULL ,
     foto_perfil VARCHAR2(200) NULL ,
     fk_id_rol NUMBER NULL,
     password VARCHAR2(100) NULL,
@@ -510,3 +510,7 @@ select nombre_usuario,apellido_usuario,correo_usuario,password_usuario,distinct 
 
 select distinct id_interno_usr, nombre_usuario,apellido_usuario,correo_usuario,password_usuario from temporal;
 
+
+
+-- consulta para mostara las temporadas
+select temporada.nombre_temporada,temporada.fecha_incio_temporada,temporada.fecha_finalizacion_temporada,temporada.puntuacion_temporada from temporada;
