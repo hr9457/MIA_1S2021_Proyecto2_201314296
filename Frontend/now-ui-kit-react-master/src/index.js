@@ -37,6 +37,7 @@ import PerfilUsser from 'views/perfil-usuario/perfil-usuario.js'
 import Administracion from 'views/administracion/Administracion.js'
 import FormularioEdit from 'views/perfil-usuario/editar_info.js'
 import Password from 'views/Password/Password.js'
+import Actualizar from 'views/Password/Actualizar.js'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -51,6 +52,7 @@ ReactDOM.render(
         <Route exact path="/editar_profiel" component={FormularioEdit} />
         <Route exact path="/menu"  component={Menu}/>
         <Route exact path="/recuperar-password" component={Password} />
+        <Route exact path="/actualizar-recuperar" component={Actualizar} />
         <Route path="/login-page" render={(props) => <LoginPage {...props} />} />
         <Redirect to="/login-page" />
         <Redirect from="/" to="/index-page" />

@@ -514,3 +514,11 @@ select distinct id_interno_usr, nombre_usuario,apellido_usuario,correo_usuario,p
 
 -- consulta para mostara las temporadas
 select temporada.nombre_temporada,temporada.fecha_incio_temporada,temporada.fecha_finalizacion_temporada,temporada.puntuacion_temporada from temporada;
+
+
+-- consulta para la recuperacion de password
+select usuario.usarname, usuario.correo_electronico from usuario where usuario.usarname ='administrador';
+
+
+update uaurio set password where usarname = 'b221d9dbb083a7f33428d7c2a3c3198ae925614d70210e28716ccaa7cd4ddb79';
+update usuario set password='b221d9dbb083a7f33428d7c2a3c3198ae925614d70210e28716ccaa7cd4ddb79' where usarname = 'jpook0@army.mil';

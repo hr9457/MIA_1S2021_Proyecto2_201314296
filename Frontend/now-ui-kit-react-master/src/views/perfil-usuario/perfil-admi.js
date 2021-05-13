@@ -1,5 +1,5 @@
 import DefaultFooter from 'components/Footers/DefaultFooter';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Button from 'reactstrap/lib/Button';
 import Card from 'reactstrap/lib/Card';
 import CardBody from 'reactstrap/lib/CardBody';
@@ -29,6 +29,9 @@ function cerrrarSession(){
 function Administracion(){
     window.location.href="./administracion";  
 }
+
+
+
 
 // pagina de usuario perfil de administrador
 function ProfileAdmi(){

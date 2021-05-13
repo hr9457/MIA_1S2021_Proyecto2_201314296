@@ -30,8 +30,8 @@ function Administracion(){
 
     const columnas = [
         {tittle:'Nombre',field:'Nombre'},
-        {tittle:'FechaInicio',field:'FechaInicio'},
-        {tittle:'FechaFinalizacion',field:'FechaFinalizacion'},
+        {tittle:'Fecha Inicio',field:'FechaInicio'},
+        {tittle:'Fecha Finalizacion',field:'FechaFinalizacion'},
         {tittle:'Puntuacon',field:'Puntuacion',type:'numeric'}
     ]
 

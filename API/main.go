@@ -444,6 +444,22 @@ type data_temporada struct {
 	Puntuacion        int
 }
 
+// struct para recuperacion de password
+type data_recuperacion struct {
+	Username string
+	Correo   string
+}
+
+// struct para recibir el username
+type data_username struct {
+	Username string
+}
+
+type data_actualizacion struct {
+	Username string
+	Password string
+}
+
 // ****************************************************************************
 // ****************************************************************************
 // ****************************************************************************
@@ -637,6 +653,21 @@ func actualizar(usuario dato_actualizado) error {
 	return error
 }
 
+// consulta para actualizar password
+func consulta_actualizar_password(username, password string) error {
+	db, error := obtenerConeccion()
+	if error != nil {
+		fmt.Println("Error en la conexion con la DB")
+		return error
+	}
+	defer db.Close()
+	// fmt.Println(password)
+	// fmt.Println(username)
+	var sqlQuery = "update usuario set password='" + password + "' where usarname =  '" + username + "' "
+	_, error = db.Exec(sqlQuery)
+	return error
+}
+
 // consulta para ver las temporadas insertadas en la base de datos
 func get_temporadas() ([]data_temporada, error) {
 	temporada := []data_temporada{}
@@ -666,6 +697,31 @@ func get_temporadas() ([]data_temporada, error) {
 	}
 	return temporada, nil
 
+}
+
+// consulta para recuperar password
+func consulta_password(username string) ([]data_recuperacion, error) {
+	usuario := []data_recuperacion{}
+	db, err := obtenerConeccion()
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+	var slqQuery = "select usuario.usarname, usuario.correo_electronico from usuario where usuario.usarname ='" + username + "'"
+	rows, err := db.Query(slqQuery)
+	if err != nil {
+		log.Fatal("Error \n", err)
+	}
+	defer rows.Close()
+	var resultado data_recuperacion
+	for rows.Next() {
+		err = rows.Scan(&resultado.Username, &resultado.Correo)
+		if err != nil {
+			return nil, err
+		}
+		usuario = append(usuario, resultado)
+	}
+	return usuario, nil
 }
 
 // consulta para insertar los usuario de la tabla temporal a la base de datos
@@ -756,6 +812,44 @@ func actualizar_usuario(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(mensajeCofirmacion)
 		fmt.Println("Datos Actualizados")
 	}
+}
+
+// funcion para actualiar password
+func actualizacionPassword(w http.ResponseWriter, r *http.Request) {
+	var usuario data_actualizacion
+	reqBody, _ := ioutil.ReadAll(r.Body)
+	json.Unmarshal(reqBody, &usuario)
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
+
+	error := consulta_actualizar_password(usuario.Username, usuario.Password)
+	fmt.Print(error)
+	if error != nil {
+		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.WriteHeader(http.StatusOK)
+		// mensaje de retorno  erroneo
+		var mensajeError confirmacion
+		mensajeError.MENSAJE = "Error no se ha podido actualizar los datos"
+		mensajeError.TIPO = 0
+		// conversion a json  para enviar
+		json.NewEncoder(w).Encode(mensajeError)
+		fmt.Println("No se han actualizados los datos")
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.WriteHeader(http.StatusOK)
+		// mesaje de exito en la actualizacion
+		var mensajeCofirmacion confirmacion
+		mensajeCofirmacion.MENSAJE = "Datos Actualizados"
+		mensajeCofirmacion.TIPO = 1
+		// conversion a json para enviar
+		json.NewEncoder(w).Encode(mensajeCofirmacion)
+		fmt.Println("Datos Actualizados")
+	}
+
 }
 
 // API - SET para insertar usuario nuevos en la base de datos
@@ -923,6 +1017,7 @@ func prueba_post(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(datos2)
 }
 
+// funcion del router para la consulta de las temporadas
 func obtenerTemporadas(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -932,6 +1027,35 @@ func obtenerTemporadas(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("->", err)
 	} else {
 		json.NewEncoder(w).Encode(temporadas)
+	}
+}
+
+// funcion del router para la recuperacion del password
+func recuperarPassword(w http.ResponseWriter, r *http.Request) {
+	var datos data_username
+	reqBody, _ := ioutil.ReadAll(r.Body)
+	// datos recibidos
+	json.Unmarshal(reqBody, &datos)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.WriteHeader(http.StatusOK)
+	inforamcion, err := consulta_password(datos.Username)
+	if err != nil {
+		// mensaje de retorno erroneo
+		var errorMensaje [1]data_recuperacion
+		errorMensaje[0].Username = ""
+		errorMensaje[0].Correo = ""
+		json.NewEncoder(w).Encode(errorMensaje)
+	} else {
+		// mensaje de retorno erroneo
+		var errorMensaje [1]data_recuperacion
+		errorMensaje[0].Username = ""
+		errorMensaje[0].Correo = ""
+		if len(inforamcion) == 0 {
+			json.NewEncoder(w).Encode(errorMensaje)
+		} else {
+			json.NewEncoder(w).Encode(inforamcion)
+		}
 	}
 }
 
@@ -1011,6 +1135,12 @@ func main() {
 
 	// router para obtener los datos de la temporadas registradas
 	router.HandleFunc("/temporadas", obtenerTemporadas).Methods("GET")
+
+	// router para obtener datos para recuperacion de password
+	router.HandleFunc("/recuperar-password", recuperarPassword).Methods("POST")
+
+	// router para actualizar , recuperar password
+	router.HandleFunc("/actualizar_password", actualizacionPassword).Methods("POST")
 
 	// puerto principal para la escucha
 	log.Fatal(http.ListenAndServe(":4000", router))
